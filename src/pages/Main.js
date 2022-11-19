@@ -21,6 +21,7 @@ const Main = () => {
 
   return (
     <div>
+      <button>start</button>
         <Question question={question}/>
     </div>
   )
