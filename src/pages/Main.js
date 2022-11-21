@@ -4,14 +4,16 @@ import Question from '../questions-answers/Question'
 
 
 const Main = () => {
-    const url = "https://the-trivia-api.com/api/questions?limit=5"
+    const url = "https://the-trivia-api.com/api/questions?limit=1"
+    //const url = "https://opentdb.com/api.php?amount=5&difficulty=medium&type=multiple"
     const [question, setQuestion] = useState([]);
     const [loading, setLoading] = useState(false)
 
     useEffect(()=>{
       const fetchPosts = async () =>{
-      setLoading(true)
-      const res = await axios.get(url);
+       setLoading(true)
+        const res = await axios.get(url);
+        console.log(res)
         setQuestion(res.data)
         console.log(res.data)
         }
@@ -21,8 +23,8 @@ const Main = () => {
 
   return (
     <div>
-      <button>start</button>
-        <Question question={question}/>
+
+        <Question question={question} />
     </div>
   )
 }
