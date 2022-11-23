@@ -1,17 +1,17 @@
 
-import Question  from '../questions-answers/Question'
 import { style } from '@mui/system'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-
-
+import Question from '../questions-answers/Question'
 
 const Main = () => {
 
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(false)
 
-  const url = `https://the-trivia-api.com/api/questions?limit=5&difficulty=medium`
+  const url = "https://the-trivia-api.com/api/questions?limit=5&difficulty=medium"
+
+  
 
   useEffect(()=>{
     const fetchPosts = async () =>{
@@ -23,13 +23,12 @@ const Main = () => {
     }
   fetchPosts()
   setLoading(false)
-  },[])
+  }, [])
 
 
   return questions.length > 0 ? (
     <div>
-    
-        <Question data={questions[0]} />
+      <Question questions={questions}/>
     </div>
   ) :(
     <h1>loading...</h1>
