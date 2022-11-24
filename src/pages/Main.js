@@ -28,10 +28,10 @@ const Main = () => {
 
   return questions.length > 0 ? (
     <div>
-      <Question questions={questions}/>
+      <Question questions={questions} />
     </div>
   ) :(
-    <h1>loading...</h1>
+    <h1>Loading...</h1>
   ); 
 }
 
