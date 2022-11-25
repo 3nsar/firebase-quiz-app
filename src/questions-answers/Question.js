@@ -4,9 +4,13 @@ import React from 'react'
 
 const Question = ({questions}) => {
 
-    const Button = ({answer}) => {
+  const Button = ({answer}) => {
         return <h3>{answer}</h3>
-    }  
+  }  
+
+  const sortAnswers = [questions[0].correctAnswer, ...questions[0].incorrectAnswers]
+
+
     
   return (
     <div className='question-container'>
