@@ -10,6 +10,13 @@ const Question = ({questions}) => {
 
   const sortAnswers = [questions[0].correctAnswer, ...questions[0].incorrectAnswers]
 
+  const random = (arr)=>{
+    for(let i = 0;i<100;i++){
+        const a = Math.floor(Math.random() * arr.length);
+        const b = Math.floor(Math.random() * arr.length);
+    }
+  }
+
 
     
   return (
