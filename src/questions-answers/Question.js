@@ -8,7 +8,7 @@ const Question = ({questions}) => {
         return <h3>{answer}</h3>
   }  
 
-  const sortAnswers = [questions[0].correctAnswer, ...questions[0].incorrectAnswers]
+  const sortAnswers = [questions[0].correctAnswer, ...questions[0].incorrectAnswers].sort(() => Math.random() - 0.5)
 
   const random = (arr)=>{
     for(let i = 0;i<100;i++){
