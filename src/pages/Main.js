@@ -25,6 +25,10 @@ const Main = () => {
   setLoading(false)
   }, [])
 
+  const handleAnswer = () =>{
+    
+  }
+
 
   return questions.length > 0 ? (
     <div>
