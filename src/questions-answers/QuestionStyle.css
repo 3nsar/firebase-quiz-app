@@ -2,13 +2,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1.1rem;
+    padding: 1rem;
     height: 100vh;
     
 }
 
 .question-content{
-    border: 5px solid rgb(115, 56, 255);
+    border: 5px solid rgb(110, 56, 255);
     display: flex;
     flex-direction: column;
     align-items: center;
