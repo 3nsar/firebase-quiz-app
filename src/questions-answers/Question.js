@@ -23,10 +23,10 @@ const Question = ({questions}) => {
     <div className='question-container'>
         <div className='question-content'>
           <h2>{questions[0].question}</h2>
-          <Button answer = {questions[0].correctAnswer} />
-          <Button answer = {questions[0].incorrectAnswers[0]} />
-          <Button answer = {questions[0].incorrectAnswers[1]} />
-          <Button answer = {questions[0].incorrectAnswers[2]} />
+          <Button onClick= {() => handleAnswer(true)} answer = {sortAnswers[0]} />
+          <Button onClick= {() => handleAnswer(false)} answer = {sortAnswers[1]} />
+          <Button onClick= {() => handleAnswer(false)} answer = {sortAnswers[2]} />
+          <Button onClick= {() => handleAnswer(false)} answer = {sortAnswers[3]} />
           <h4>You score 1 / 5</h4>
         </div>
     </div>
