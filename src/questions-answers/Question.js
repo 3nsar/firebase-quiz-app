@@ -2,7 +2,7 @@ import React from 'react'
 
 
 
-const Question = ({questions}) => {
+const Question = ({questions, handleAnswer}) => {
 
   const Button = ({answer}) => {
         return <h3>{answer}</h3>
