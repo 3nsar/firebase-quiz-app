@@ -8,6 +8,7 @@ const Main = () => {
 
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(false)
+  const [currentQuestion, setCurrentQuestion] = useState("")
 
   const url = "https://the-trivia-api.com/api/questions?limit=5&difficulty=medium"
 
@@ -32,7 +33,7 @@ const Main = () => {
 
   return questions.length > 0 ? (
     <div>
-      <Question questions={questions} />
+      <Question questions={questions} handleAnswer={handleAnswers}/>
     </div>
   ) :(
     <h1>Loading...</h1>
