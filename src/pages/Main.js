@@ -20,7 +20,9 @@ const Main = () => {
       const res = await axios.get(url);
       console.log(res)
       setQuestions(res.data)
+      setCurrentQuestion(res.data)
       console.log(res.data)
+
     }
   fetchPosts()
   setLoading(false)
