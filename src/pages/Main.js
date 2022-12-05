@@ -20,7 +20,7 @@ const Main = () => {
       const res = await axios.get(url);
       console.log(res)
       setQuestions(res.data)
-      setCurrentQuestion(res.data)
+      setCurrentQuestion(res.data[0])
       console.log(res.data)
 
     }
@@ -35,7 +35,7 @@ const Main = () => {
 
   return questions.length > 0 ? (
     <div>
-      <Question questions={questions} handleAnswer={handleAnswers}/>
+      <Question data={questions[0]} handleAnswer={handleAnswers}/>
     </div>
   ) :(
     <h1>Loading...</h1>
