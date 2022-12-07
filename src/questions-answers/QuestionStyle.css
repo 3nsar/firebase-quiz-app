@@ -20,6 +20,7 @@
     border: 2px solid rgb(189, 187, 187);
     margin-top: .6rem;
     padding: .5rem 2rem .5rem 2rem;
+    border-radius: 10px;
 }
 
 .question-content h3:hover{
