@@ -26,10 +26,13 @@ const Main = () => {
   setLoading(false)
   }, [])
 
+  const handleAnswer  = (answer) =>{
+
+  }
 
   return questions.length > 0 ? (
     <div>
-      <Question data={questions[0]}/>
+      <Question data={questions[0]} handleAnswer={handleAnswer}/>
     </div>
   ) :(
     <h1>Loading...</h1>
