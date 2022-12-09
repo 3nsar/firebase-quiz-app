@@ -8,7 +8,7 @@ const Question = ({handleAnswer, data: {question, correctAnswer, incorrectAnswer
         return <h3>{answer}</h3>
   }  
 
-  const swappedAnswers = [correctAnswer, ...incorrectAnswers];
+  const swappedAnswers = [correctAnswer, ...incorrectAnswers].sort(() => Math.random() -0.5);
 
   return (
     <div className='question-container'>

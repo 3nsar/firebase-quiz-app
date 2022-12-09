@@ -7,6 +7,7 @@ import Question from '../questions-answers/Question'
 const Main = () => {
 
   const [questions, setQuestions] = useState([]);
+  const [currentQuestion, setCurrentQuestion] = useState([])
   const [loading, setLoading] = useState(false)
 
   const url = "https://the-trivia-api.com/api/questions?limit=5&difficulty=medium"
@@ -19,6 +20,7 @@ const Main = () => {
       const res = await axios.get(url);
       console.log(res)
       setQuestions(res.data)
+      setCurrentQuestion(res.data[0])
       console.log(res.data)
 
     }
@@ -32,7 +34,7 @@ const Main = () => {
 
   return questions.length > 0 ? (
     <div>
-      <Question data={questions[0]} handleAnswer={handleAnswer}/>
+      <Question data={currentQuestion} handleAnswer={handleAnswer}/>
     </div>
   ) :(
     <h1>Loading...</h1>
