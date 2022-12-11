@@ -8,6 +8,8 @@ const Main = () => {
 
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0)
+  const [score, setScore] = useState(0)
+  const [finishedGame, setFinishedGame] = useState()
   const [loading, setLoading] = useState(false)
 
   const url = "https://the-trivia-api.com/api/questions?limit=5&difficulty=medium"
@@ -28,6 +30,11 @@ const Main = () => {
   }, [])
 
   const handleAnswer  = (answer) =>{
+    setCurrentQuestion(currentQuestion +1);
+    if(answer === questions[currentQuestion].correctAnswer){
+      setScore(prev => prev +1)
+
+    }
 
   }
 
