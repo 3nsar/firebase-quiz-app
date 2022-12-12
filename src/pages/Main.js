@@ -9,7 +9,7 @@ const Main = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [score, setScore] = useState(0)
-  const [finishedGame, setFinishedGame] = useState()
+  const [finishedGame, setFinishedGame] = useState(false)
   const [loading, setLoading] = useState(false)
 
   const url = "https://the-trivia-api.com/api/questions?limit=5&difficulty=medium"
@@ -30,7 +30,8 @@ const Main = () => {
   }, [])
 
   const handleAnswer  = (answer) =>{
-    setCurrentQuestion(currentQuestion +1);
+    const newIndex = currentQuestion +1
+    setCurrentQuestion(newIndex);
     if(answer === questions[currentQuestion].correctAnswer){
       setScore(prev => prev +1)
 
@@ -38,13 +39,15 @@ const Main = () => {
 
   }
 
-  return questions.length > 0 ? (
+  return finishedGame >= questions.length ? (
+    <div>You scored {score}</div>
+  ) : ( questions.length > 0 ? (
     <div>
       <Question data={questions[currentQuestion]} handleAnswer={handleAnswer}/>
     </div>
   ) :(
     <h1>Loading...</h1>
-  ); 
+  )); 
 }
 
 export default Main
