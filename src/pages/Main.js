@@ -37,17 +37,21 @@ const Main = () => {
 
     }
 
+    if(newIndex >= questions.length) {
+      setFinishedGame(true)
+    }
+
   }
 
-  return finishedGame >= questions.length ? (
+  return finishedGame ? (
     <div>You scored {score}</div>
-  ) : ( questions.length > 0 ? (
+  ) :  questions.length > 0 ? (
     <div>
       <Question data={questions[currentQuestion]} handleAnswer={handleAnswer}/>
     </div>
   ) :(
     <h1>Loading...</h1>
-  )); 
+  ); 
 }
 
 export default Main
