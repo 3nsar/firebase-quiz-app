@@ -44,7 +44,7 @@ const Main = () => {
   }
 
   return finishedGame ? (
-    <div>You scored {score}</div>
+    <div>You scored {score}/5</div>
   ) :  questions.length > 0 ? (
     <div>
       <Question data={questions[currentQuestion]} handleAnswer={handleAnswer}/>

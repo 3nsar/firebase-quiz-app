@@ -21,6 +21,7 @@ const Question = ({handleAnswer, data: {question, correctAnswer, incorrectAnswer
           {swappedAnswers.map((answer) => (
             <button onClick={() => handleAnswer(answer)}>{answer}</button>
           ))}
+          <button>Next Question</button>
           <h4>You score 1 / 5</h4>
         </div>
     </div>
