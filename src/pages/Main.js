@@ -10,6 +10,7 @@ const Main = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [score, setScore] = useState(0)
   const [finishedGame, setFinishedGame] = useState(false)
+  const [showAnswer, setShowAnswer] = useState(false)
   const [loading, setLoading] = useState(false)
 
   const url = "https://the-trivia-api.com/api/questions?limit=5&difficulty=medium"
