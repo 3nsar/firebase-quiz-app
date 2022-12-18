@@ -33,7 +33,7 @@ const Main = () => {
   const handleAnswer  = (answer) =>{
     if(!showAnswer){
     if(answer === questions[currentQuestion].correctAnswer){
-      setScore(score +1)
+      setScore(prev => prev +1)
     }
 
     setShowAnswer(true)
