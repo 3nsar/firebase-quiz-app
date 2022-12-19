@@ -9,7 +9,7 @@ const Question = ({handleAnswer, showAnswer,handleNextQuestion, data: {question,
   return (
     <div className='question-container'>
         <div className='question-content'>
-          <h3>Time left: 00:00</h3>
+          <h4>Time left: 00:00</h4>
           <h2>{question}</h2>
           {swappedAnswers.map((answer) => (
 
