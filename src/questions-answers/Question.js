@@ -13,7 +13,8 @@ const Question = ({handleAnswer, showAnswer,handleNextQuestion, data: {question,
           <h2>{question}</h2>
           {swappedAnswers.map((answer) => (
 
-          <h3 onClick={() => handleAnswer(answer)}>{answer}</h3>
+            
+          <h3 className={`${correctAnswer === answer ? 'correct-bg' : 'white-bg'}`} onClick={() => handleAnswer(answer)}>{answer}</h3>
 
           ))}
 
