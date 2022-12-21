@@ -35,29 +35,30 @@ const Main = () => {
     if(answer === questions[currentQuestion].correctAnswer){
       setScore(prev => prev +1)
     }
-
-    setShowAnswer(true)
   }
+  setShowAnswer(true)
 };
 
   const handleNextQuestion = () =>{
+    setCurrentQuestion(currentQuestion +1)
     setShowAnswer(false)
-    setCurrentQuestion(prev => prev +1)
   }
 
-  return finishedGame ? (
-    <div>You scored {score}/5</div>
-  ) :  questions.length > 0 ? (
-    <div>
+  return questions.length > 0 ? (
+    <div>{currentQuestion >= questions.length ?(
+      <h1>you score is : {score}</h1>
+    ): (
       <Question 
-      data={questions[currentQuestion]} 
-      handleAnswer={handleAnswer} 
+      data={questions[currentQuestion]}
       showAnswer={showAnswer}
-      handleNextQuestion={handleNextQuestion}/>
-    </div>
-  ) :(
-    <h1>Loading...</h1>
-  ); 
+      handleAnswer={handleAnswer}
+      handleNextQuestion={handleNextQuestion}
+      />
+    )}</div>
+  ) : (
+    <h3>Loading...</h3>
+  );
 }
+
 
 export default Main
