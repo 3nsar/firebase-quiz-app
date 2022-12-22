@@ -12,23 +12,36 @@ const Main = () => {
   const [finishedGame, setFinishedGame] = useState(false)
   const [showAnswer, setShowAnswer] = useState(false)
   const [loading, setLoading] = useState(false)
+  
+  
 
   const url = "https://the-trivia-api.com/api/questions?limit=5&difficulty=medium"
 
-  
+
 
   useEffect(()=>{
     const fetchPosts = async () =>{
      setLoading(true)
       const res = await axios.get(url);
-      console.log(res)
-      setQuestions(res.data)
+  
+      const questions = res.data.map((question)=>
+      ({
+        ...question,
+        answers:[
+          question.correctAnswer,
+          ... question.incorrectAnswers
+        ].sort(()=>Math.random())
+      }))
+     
+      setQuestions(questions)
       console.log(res.data)
 
     }
   fetchPosts()
   setLoading(false)
   }, [])
+
+
 
   const handleAnswer  = (answer) =>{
     if(!showAnswer){
@@ -53,6 +66,7 @@ const Main = () => {
       showAnswer={showAnswer}
       handleAnswer={handleAnswer}
       handleNextQuestion={handleNextQuestion}
+
       />
     )}</div>
   ) : (

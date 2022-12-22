@@ -1,17 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { FcAlarmClock } from 'react-icons/fc'
 
 
 
-const Question = ({handleAnswer, handleNextQuestion,showAnswer, data: {question, correctAnswer, incorrectAnswers}}) => {
+const Question = ({handleAnswer, handleNextQuestion,showAnswer, data: {question, correctAnswer, answers}}) => {
+  const [counter, setCounter] = useState(10)
 
-  const swappedAnswers = [correctAnswer, ...incorrectAnswers].sort(() => Math.random() -0.5);
+  React.useEffect(() => {
+    counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
+  }, [counter]);
+
 
   return (
     <div className='question-container'>
+      <h2><FcAlarmClock />{counter}</h2>
         <div className='question-content'>
-          <h4>Time left: 00:00</h4>
           <h2>{question}</h2>
-          {swappedAnswers.map((answer) => {
+          {answers.map((answer) => {
             const bgColor = showAnswer ? answer === correctAnswer ? 'correct-bg' : 'incorrect-bg' : 'white-bg'
           return(
           <h3 className={`${bgColor}`} onClick={() => handleAnswer(answer)}>{answer}</h3>
@@ -26,4 +31,4 @@ const Question = ({handleAnswer, handleNextQuestion,showAnswer, data: {question,
   )
 }
 
-export default Question
+export default Question 
