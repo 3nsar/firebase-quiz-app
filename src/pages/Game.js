@@ -59,7 +59,11 @@ const Game = () => {
 
   return questions.length > 0 ? (
     <div>{currentQuestion >= questions.length ?(
-      <h1>You scored: {score} / 5</h1>
+      <div>
+         <h1>You scored: {score} / 5</h1>
+         <li><a href="/game">Play again</a></li>
+         <li><a href="/">Return</a></li>
+      </div>
     ): (
       <Question 
       data={questions[currentQuestion]}

@@ -4,7 +4,7 @@ import { FcAlarmClock } from 'react-icons/fc'
 
 
 const Question = ({handleAnswer, handleNextQuestion,showAnswer,score, data: {question, correctAnswer, answers}}) => {
-  const [counter, setCounter] = useState(1)
+  const [counter, setCounter] = useState(60)
 
   React.useEffect(() => {
     counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
@@ -30,9 +30,9 @@ const Question = ({handleAnswer, handleNextQuestion,showAnswer,score, data: {que
     </div>
   ):(
     <div>
-    <h1>You didn't make it to the end! Try again!</h1>
-    <li><a href="/game">Play again</a></li>
-    <li><a href="/">Return</a></li>
+      <h1>You didn't make it to the end! Try again!</h1>
+      <li><a href="/game">Play again</a></li>
+      <li><a href="/">Return</a></li>
     </div>
   )
 }
