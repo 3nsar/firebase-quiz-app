@@ -9,13 +9,12 @@ const Game = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [score, setScore] = useState(0)
-  const [finishedGame, setFinishedGame] = useState(false)
   const [showAnswer, setShowAnswer] = useState(false)
   const [loading, setLoading] = useState(false)
   
   
 
-  const url = "https://the-trivia-api.com/api/questions?limit=5&difficulty=medium"
+  const url = "https://the-trivia-api.com/api/questions?limit=10&difficulty=medium"
 
 
 
@@ -30,7 +29,7 @@ const Game = () => {
         answers:[
           question.correctAnswer,
           ... question.incorrectAnswers
-        ].sort(()=>Math.random())
+        ].sort(()=>Math.random() -0.5)
       }))
      
       setQuestions(questions)
@@ -40,8 +39,6 @@ const Game = () => {
   fetchPosts()
   setLoading(false)
   }, [])
-
-
 
   const handleAnswer  = (answer) =>{
     if(!showAnswer){
@@ -60,7 +57,7 @@ const Game = () => {
   return questions.length > 0 ? (
     <div>{currentQuestion >= questions.length ?(
       <div>
-         <h1>You scored: {score} / 5</h1>
+         <h1>You scored: {score} / 10</h1>
          <li><a href="/game">Play again</a></li>
          <li><a href="/">Return</a></li>
       </div>
