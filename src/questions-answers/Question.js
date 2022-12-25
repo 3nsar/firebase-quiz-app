@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { FcAlarmClock } from 'react-icons/fc'
 
-
-
 const Question = ({handleAnswer, handleNextQuestion,showAnswer,score, data: {question, correctAnswer, answers}}) => {
   const [counter, setCounter] = useState(60)
 
@@ -21,10 +19,12 @@ const Question = ({handleAnswer, handleNextQuestion,showAnswer,score, data: {que
             const bgColor = showAnswer ? answer === correctAnswer ? 'correct-bg' : 'incorrect-bg' : 'white-bg'
           return(
           <h3 className={`${bgColor}`} onClick={() => handleAnswer(answer)}>{answer}</h3>
+
           )})}
 
-          {showAnswer && (
+          {showAnswer &&(
              <button className='next-btn' onClick={handleNextQuestion}>Next Question</button>
+
           )}
         </div>
     </div>

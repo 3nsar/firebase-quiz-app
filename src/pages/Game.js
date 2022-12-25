@@ -11,10 +11,11 @@ const Game = () => {
   const [score, setScore] = useState(0)
   const [showAnswer, setShowAnswer] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [level, setLevel] = useState(1)
   
   
 
-  const url = "https://the-trivia-api.com/api/questions?limit=10&difficulty=medium"
+  const url = "https://the-trivia-api.com/api/questions?limit=5&difficulty=medium"
 
 
 
@@ -40,27 +41,39 @@ const Game = () => {
   setLoading(false)
   }, [])
 
+  useEffect(() => {
+    if (score > 1) {
+      setLevel(prev => prev + 1);
+    }
+  }, [score]);
+
+
+
   const handleAnswer  = (answer) =>{
     if(!showAnswer){
     if(answer === questions[currentQuestion].correctAnswer){
       setScore(prev => prev +1)
     }
   }
+  
   setShowAnswer(true)
 };
 
+
   const handleNextQuestion = () =>{
-    setCurrentQuestion(currentQuestion +1)
+    setCurrentQuestion(prev => prev +1)
     setShowAnswer(false)
   }
 
-  return questions.length > 0 ? (
-    <div>{currentQuestion >= questions.length ?(
+
+  return questions.length> 0  ? (
+    <div>{currentQuestion >= questions.length ? (
       <div>
          <h1>You scored: {score} / 10</h1>
+         <h1>Level: {score > 1 ? setLevel(prev => prev +1) : "Try again"}</h1>
          <li><a href="/game">Play again</a></li>
          <li><a href="/">Return</a></li>
-      </div>
+      </div> 
     ): (
       <Question 
       data={questions[currentQuestion]}
@@ -70,7 +83,8 @@ const Game = () => {
 
       />
     )}</div>
-  ) : (
+
+  ): (
     <h3>Loading...</h3>
   );
 }
