@@ -11,7 +11,7 @@ const Game = () => {
   const [score, setScore] = useState(0)
   const [showAnswer, setShowAnswer] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [level, setLevel] = useState(1)
+  const [level, setLevel] = useState(localStorage.getItem("level"))
   
   
 
@@ -41,11 +41,19 @@ const Game = () => {
   setLoading(false)
   }, [])
 
+ 
   useEffect(() => {
-    if (score > 1) {
-      setLevel(prev => prev + 1);
-    }
-  }, [score]);
+      if (!localStorage.level) {
+        localStorage.setItem("level", 1);
+      }
+  }, []);
+  
+  useEffect(() => {
+      if (currentQuestion >= questions.length && score >= 1) {
+        localStorage.level = Number(level) + 1
+      }
+  }, [currentQuestion]);
+
 
 
 
@@ -66,13 +74,16 @@ const Game = () => {
   }
 
 
+
+
   return questions.length> 0  ? (
     <div>{currentQuestion >= questions.length ? (
       <div>
          <h1>You scored: {score} / 10</h1>
-         <h1>Level: {score > 1 ? setLevel(prev => prev +1) : "Try again"}</h1>
+         <h1>Level: {score > 0 ? level : "Try again"}</h1>
          <li><a href="/game">Play again</a></li>
          <li><a href="/">Return</a></li>
+
       </div> 
     ): (
       <Question 
