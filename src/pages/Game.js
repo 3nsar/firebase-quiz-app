@@ -6,6 +6,7 @@ import Question from '../questions-answers/Question'
 import {addDoc, collection, getDocs, query, updateDoc, where, doc} from "firebase/firestore"
 import {auth, db} from "../config/firebase"
 import { useAuthState } from 'react-firebase-hooks/auth'
+import Main from './Main'
 
 
 const Game = () => {
@@ -43,13 +44,6 @@ const Game = () => {
   fetchPosts()
   setLoading(false)
   }, [])
-
-  const createDb = async () =>{
-    await addDoc(levelRef, {
-      userId: user.uid,
-      level: 1,
-    });
-  }
 
   const handleAnswer  = (answer) =>{
     if(!showAnswer){
@@ -89,7 +83,7 @@ const updateLevel = async (id, level) =>{
   const newField = {level: level +1}
   await updateDoc(levelDoc, newField)
 } 
- 
+
 
   return questions.length> 0  ? (
     <div>{currentQuestion >= questions.length ? (
@@ -100,18 +94,19 @@ const updateLevel = async (id, level) =>{
          <li><a href="/main">Return</a></li>
          {score > 0 ?level.map((item) =>(
 
-         <h1 {...updateLevel(item.id, item.level)}>{item.level}</h1>
+         <h1 {...updateLevel(item.id, item.level)}>{item.level} {item.username}</h1>
          )) : "SSSSS"}
           
       </div> 
     ): (
-
       <Question 
       data={questions[currentQuestion]}
       showAnswer={showAnswer}
       handleAnswer={handleAnswer}
       handleNextQuestion={handleNextQuestion}
+      
       />
+ 
  
     )}</div>
 
