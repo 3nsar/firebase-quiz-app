@@ -12,9 +12,9 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-        <Route path='/' element={<Main />}/>
+        <Route path='/main' element={<Main />}/>
         <Route path='/game' element={<Game />}/>
-        <Route path='/login' element={<Login />}/>
+        <Route path='/' element={<Login />}/>
         </Routes>
       </Router>
     </div>
