@@ -1,30 +1,32 @@
 
 import {auth, db} from "../config/firebase"
 import { useAuthState } from 'react-firebase-hooks/auth'
-import {addDoc, collection, getDocs, query, updateDoc, where, doc} from "firebase/firestore"
+import {addDoc, collection, getDocs, query, updateDoc, where, docs} from "firebase/firestore"
+import { useNavigate } from 'react-router'
 
 import React, { useState } from 'react'
+import { useEffect } from "react"
 
 const Main = () => {
 
   const [user] = useAuthState(auth)
-    {/*const levelRef = collection(db, "levels")*/}
 
-    const createDb = async () =>{
-      const level= 1
-      const userId= user.uid
-      const username = user.displayName
-  
-      const colllectionRef = collection(db, "levels")
-      const payload = {level, userId, username}
-      await addDoc(colllectionRef, payload)
-    }
-   
+  const levelRef = collection(db, "levels")
+  const navigate = useNavigate()
 
+  const addLevel = async () =>{
+    
+    await addDoc(levelRef, {userId: user.uid, username: user.displayName, level: 1} ) 
+  }
+
+  const createDb = () =>{
+    addLevel();
+    navigate("/game")
+  }
 
   return (
     <div>
-        <li><a href="/game"  onClick={createDb}>Start</a></li>
+       <button onClick={createDb}>ADDDDD</button>
     </div>
   )
 }

@@ -84,7 +84,6 @@ const updateLevel = async (id, level) =>{
   await updateDoc(levelDoc, newField)
 } 
 
-
   return questions.length> 0  ? (
     <div>{currentQuestion >= questions.length ? (
       <div>
@@ -99,14 +98,13 @@ const updateLevel = async (id, level) =>{
           
       </div> 
     ): (
+
       <Question 
       data={questions[currentQuestion]}
       showAnswer={showAnswer}
       handleAnswer={handleAnswer}
       handleNextQuestion={handleNextQuestion}
-      
       />
- 
  
     )}</div>
 
