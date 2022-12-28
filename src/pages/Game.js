@@ -1,4 +1,3 @@
-
 import { style } from '@mui/system'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -22,7 +21,7 @@ const Game = () => {
   const [level, setLevel] = useState([])
   const [user] = useAuthState(auth)
   const levelRef = collection(db, "levels")
- 
+
   useEffect(()=>{
     const fetchPosts = async () =>{
      setLoading(true)
@@ -60,29 +59,32 @@ const Game = () => {
     setShowAnswer(false)
   }
 
+  const updateLevel = async (id, level) =>{
+    const levelDoc = doc(db, "levels", id);
+    const newField = {level: level +1}
+    await updateDoc(levelDoc, newField)
+  } 
+  
+
   useEffect(()=>{
     const showLevel = async () =>{
       const data = await getDocs(levelRef);
-      setLevel(data.docs.map((doc)=>({...doc.data(), id: doc.id})));
+      setLevel(data.docs.map((doc)=>({...doc.data(), id: doc.id}))); 
     }
     showLevel()
 
-  },[])
+  },[])  
 
- useEffect(() => {
+useEffect(() => {
     const getLevel = async () =>{
     if (currentQuestion >= questions.length && score >= 1) {
       await updateLevel();
+      
     }
     getLevel()
   }
 }, [currentQuestion]); 
 
-const updateLevel = async (id, level) =>{
-  const levelDoc = doc(db, "levels", id);
-  const newField = {level: level +1}
-  await updateDoc(levelDoc, newField)
-} 
 
   return questions.length> 0  ? (
     <div>{currentQuestion >= questions.length ? (
@@ -91,11 +93,11 @@ const updateLevel = async (id, level) =>{
          {/*<h1>Level: {score > 0 ? level : "Try again"}</h1> */}
          <li><a href="/game">Play again</a></li> 
          <li><a href="/main">Return</a></li>
-         {score > 0 ?level.map((item) =>(
+          {score > 0 ? level.map((item) =>{
+          return(
+         <h1>{item.level} {item.username}</h1>
+          )}) : "Try again"}  
 
-         <h1 {...updateLevel(item.id, item.level)}>{item.level} {item.username}</h1>
-         )) : "SSSSS"}
-          
       </div> 
     ): (
 
@@ -115,3 +117,4 @@ const updateLevel = async (id, level) =>{
 
 
 export default Game
+
