@@ -13,8 +13,12 @@ const Main = () => {
   const levelRef = collection(db, "levels")
  
   const addLevel = async () =>{
-    await addDoc(levelRef, {userId: user.uid, username: user.displayName, level: 1} ) 
-  }
+    if(user.id){
+      await addDoc(levelRef, {userId: user.uid, username: user.displayName, level: 1} ) 
+    }else{
+      console.log("USER ALREADY EXISTS")
+    }
+  } 
 
   const createDb = () =>{
     addLevel();

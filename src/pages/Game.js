@@ -6,6 +6,7 @@ import {addDoc, collection, getDocs, query, updateDoc, where, doc} from "firebas
 import {auth, db} from "../config/firebase"
 import { useAuthState } from 'react-firebase-hooks/auth'
 import Main from './Main'
+import { async } from '@firebase/util'
 
 
 const Game = () => {
@@ -76,10 +77,9 @@ const Game = () => {
   },[])  
 
 useEffect(() => {
-    const getLevel = async () =>{
+    const getLevel =  async () =>{
     if (currentQuestion >= questions.length && score >= 1) {
       await updateLevel();
-      
     }
     getLevel()
   }
@@ -95,7 +95,7 @@ useEffect(() => {
          <li><a href="/main">Return</a></li>
           {score > 0 ? level.map((item) =>{
           return(
-         <h1>{item.level} {item.username}</h1>
+         <h1 onClick={updateLevel(item.id, item.level)}>{item.level} {item.username}</h1>
           )}) : "Try again"}  
 
       </div> 
