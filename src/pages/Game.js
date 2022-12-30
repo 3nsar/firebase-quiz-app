@@ -95,7 +95,7 @@ useEffect(() => {
          <li><a href="/main">Return</a></li>
           {score > 0 ? level.map((item) =>{
           return(
-         <h1 onClick={updateLevel(item.id, item.level)}>{item.level} {item.username}</h1>
+         <h1  onClick={updateLevel(item.id, item.level)}>{item.level} {item.username}</h1>
           )}) : "Try again"}  
 
       </div> 
