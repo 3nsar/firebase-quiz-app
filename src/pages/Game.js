@@ -6,8 +6,6 @@ import {addDoc, collection, getDocs, query, updateDoc, where, doc} from "firebas
 import {auth, db} from "../config/firebase"
 import { useAuthState } from 'react-firebase-hooks/auth'
 import Main from './Main'
-import { async } from '@firebase/util'
-
 
 const Game = () => {
 
@@ -19,9 +17,9 @@ const Game = () => {
   const [showAnswer, setShowAnswer] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  const [level, setLevel] = useState([])
   const [user] = useAuthState(auth)
   const levelRef = collection(db, "levels")
+
 
   useEffect(()=>{
     const fetchPosts = async () =>{
@@ -60,43 +58,12 @@ const Game = () => {
     setShowAnswer(false)
   }
 
-  const updateLevel = async (id, level) =>{
-    const levelDoc = doc(db, "levels", id);
-    const newField = {level: level +1}
-    await updateDoc(levelDoc, newField)
-  } 
-  
-
-  useEffect(()=>{
-    const showLevel = async () =>{
-      const data = await getDocs(levelRef);
-      setLevel(data.docs.map((doc)=>({...doc.data(), id: doc.id}))); 
-    }
-    showLevel()
-
-  },[])  
-
-useEffect(() => {
-    const getLevel =  async () =>{
-    if (currentQuestion >= questions.length && score >= 1) {
-      await updateLevel();
-    }
-    getLevel()
-  }
-}, [currentQuestion]); 
-
-
   return questions.length> 0  ? (
     <div>{currentQuestion >= questions.length ? (
       <div>
          <h1>You scored: {score} / 5</h1>
-         {/*<h1>Level: {score > 0 ? level : "Try again"}</h1> */}
          <li><a href="/game">Play again</a></li> 
          <li><a href="/main">Return</a></li>
-          {score > 0 ? level.map((item) =>{
-          return(
-         <h1  onClick={updateLevel(item.id, item.level)}>{item.level} {item.username}</h1>
-          )}) : "Try again"}  
 
       </div> 
     ): (

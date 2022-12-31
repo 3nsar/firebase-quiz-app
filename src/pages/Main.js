@@ -12,30 +12,79 @@ const Main = () => {
   const [user] = useAuthState(auth)
   const navigate = useNavigate()
  
-  const levelDoc = query(levelRef, where("username", "==", user.uid))
+
+  {/*
+   const [users, setUsers] = useState([])
+ const foundUser = users.find((u) => u.uid === user.uid) 
+
+
+   const levelDoc = query(levelRef, where("username", "==", user.uid))
   
-  {/*const [users, setUsers] = useState([])
- const foundUser = users.find((u) => u.uid === user.uid) */}
- const levelRef = collection(db, "levels");
+
+ const levelRef = collection(db, "levels")
+ const levelDoc = query(levelRef, where("userId", "==", user.uid))
 
  const addLevel = async () =>{
-    if(!user.uid) {
-      await addDoc(levelRef, {userId: user.uid, username: user.displayName, level: 1} ) 
-    }else{
-      console.log("USER EXIST")
+  if(levelDoc){
+    await setDoc(levelRef, {userId: user.uid, username: user.displayName, level: 1} ) 
     
-    }
+   }else{
+    console.log("USER ALREADY EXISTS")
+   }
   }   
 
+*/}
+
+  const [userAmout, setUserAmount]= useState([])
+  const userRef = collection(db, "levels")
+  let userAll = []
+  const docRef = doc(db, "levels", user.displayName)
+  {/*useEffect(()=>{
+    const getUsers = async () =>{
+      const data = await getDocs(userRef)
+      setUserAmount(data.docs.map((doc)=> ({...doc.data(), id: doc.id  })));
+    };
+
+    getUsers()
+
+  },[]) */}
+
+  useEffect(()=>{
+
+    const getUsers = () =>{
+      getDocs(userRef)
+      .then((snapshot)=>{
+        snapshot.docs.forEach((doc)=> {
+          userAll.push({...doc.data(), id: doc.id})
+        })
+        console.log(userAll)
+      })
+        .catch(err =>{console.log(err.message)})
+    };
+    getUsers()
+
+  },[])
+
+
+  const addUser = async () =>{
+    if(docRef == user.uid){
+      console.log("USER EXISTS")
+    }else{
+    await addDoc(userRef,{username: user.displayName, userId: user.uid, level:1})
+  }
+}
 
   const createDb = () =>{
-    addLevel();
+    addUser();
     navigate("/game");
   }
 
   return (
     <div>
        <button onClick={createDb}>PLAY THE GAME</button>
+       <div>{userAll.map((item)=>(
+        <h1 key={item.id}>{item.username} {item.level}</h1>
+       ))}</div>
     </div>
   )
 }
