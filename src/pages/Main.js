@@ -7,11 +7,7 @@ import React, { useState } from 'react'
 import { useEffect } from "react"
 import { fireEvent } from "@testing-library/react"
 
-const Main = () => {
-
-  const [user] = useAuthState(auth)
-  const navigate = useNavigate()
- 
+const Main = () => { 
 
   {/*
    const [users, setUsers] = useState([])
@@ -26,7 +22,7 @@ const Main = () => {
 
  const addLevel = async () =>{
   if(levelDoc){
-    await setDoc(levelRef, {userId: user.uid, username: user.displayName, level: 1} ) 
+    await addDoc(levelRef, {userId: user.uid, username: user.displayName, level: 1} ) 
     
    }else{
     console.log("USER ALREADY EXISTS")
@@ -34,57 +30,46 @@ const Main = () => {
   }   
 
 */}
-
-  const [userAmout, setUserAmount]= useState([])
+  const [user] = useAuthState(auth)
+  const navigate = useNavigate()
   const userRef = collection(db, "levels")
-  let userAll = []
-  const docRef = doc(db, "levels", user.displayName)
-  {/*useEffect(()=>{
+  const [userAmount, setUserAmount] = useState([])
+  const querUser = query(userRef, where("userId", "==", user.uid))
+
+   useEffect(()=>{
     const getUsers = async () =>{
       const data = await getDocs(userRef)
       setUserAmount(data.docs.map((doc)=> ({...doc.data(), id: doc.id  })));
+      console.log(querUser)
+      
     };
 
     getUsers()
 
-  },[]) */}
+  },[]) 
 
   useEffect(()=>{
-
-    const getUsers = () =>{
-      getDocs(userRef)
-      .then((snapshot)=>{
-        snapshot.docs.forEach((doc)=> {
-          userAll.push({...doc.data(), id: doc.id})
-        })
-        console.log(userAll)
-      })
-        .catch(err =>{console.log(err.message)})
-    };
-    getUsers()
-
-  },[])
-
-
-  const addUser = async () =>{
-    if(docRef == user.uid){
+  const addLevel = async () =>{
+    if(querUser){
       console.log("USER EXISTS")
-    }else{
-    await addDoc(userRef,{username: user.displayName, userId: user.uid, level:1})
+    } else{
+      console.log("ADDED USER")
+      await addDoc(userRef, {userId: user.uid, username: user.displayName, level: 1} ) 
+    }
+    addLevel();
   }
-}
+},[]) 
 
   const createDb = () =>{
-    addUser();
     navigate("/game");
   }
 
   return (
     <div>
        <button onClick={createDb}>PLAY THE GAME</button>
-       <div>{userAll.map((item)=>(
-        <h1 key={item.id}>{item.username} {item.level}</h1>
-       ))}</div>
+       {userAmount.map((item)=>{
+        return <h1>{item.username}</h1>
+       })}
     </div>
   )
 }
