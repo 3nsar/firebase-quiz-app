@@ -34,13 +34,11 @@ const Main = () => {
   const navigate = useNavigate()
   const userRef = collection(db, "levels")
   const [userAmount, setUserAmount] = useState([])
-  const querUser = query(userRef, where("userId", "==", user.uid))
 
    useEffect(()=>{
     const getUsers = async () =>{
       const data = await getDocs(userRef)
       setUserAmount(data.docs.map((doc)=> ({...doc.data(), id: doc.id  })));
-      console.log(querUser)
       
     };
 
@@ -48,9 +46,8 @@ const Main = () => {
 
   },[]) 
 
-  useEffect(()=>{
   const addLevel = async () =>{
-    if(querUser){
+    if(query(userRef, where("userId", "==", user.uid))){
       console.log("USER EXISTS")
     } else{
       console.log("ADDED USER")
@@ -58,9 +55,10 @@ const Main = () => {
     }
     addLevel();
   }
-},[]) 
+
 
   const createDb = () =>{
+    addLevel()
     navigate("/game");
   }
 
