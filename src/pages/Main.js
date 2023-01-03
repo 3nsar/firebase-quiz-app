@@ -1,11 +1,13 @@
-import {auth, db} from "../config/firebase"
+import {auth, db, storage} from "../config/firebase"
 import { useAuthState } from 'react-firebase-hooks/auth'
-import {addDoc, collection, getDocs, getDoc, query, updateDoc, where, docs, doc, setDoc} from "firebase/firestore"
+import {addDoc, collection, getDocs, getDoc, query, updateDoc, where, docs, doc, setDoc, onSnapshot,firebase } from "firebase/firestore"
 import { useNavigate } from 'react-router'
 
 import React, { useState } from 'react'
 import { useEffect } from "react"
 import { fireEvent } from "@testing-library/react"
+import { FirebaseError } from "firebase/app"
+import { ref } from "firebase/storage"
 
 const Main = () => { 
 
@@ -32,36 +34,36 @@ const Main = () => {
 */}
   const [user] = useAuthState(auth)
   const navigate = useNavigate()
-  const userRef = collection(db, "levels")
   const [userAmount, setUserAmount] = useState([])
+  const levelRef = collection(db, "levels");
+
 
    useEffect(()=>{
     const getUsers = async () =>{
-      const data = await getDocs(userRef)
+      const data = await getDocs(levelRef)
       setUserAmount(data.docs.map((doc)=> ({...doc.data(), id: doc.id  })));
-      
     };
 
     getUsers()
 
   },[]) 
 
-  const addLevel = async () =>{
-    if(query(userRef, where("userId", "==", user.uid))){
-      console.log("USER EXISTS")
-    } else{
-      console.log("ADDED USER")
-      await addDoc(userRef, {userId: user.uid, username: user.displayName, level: 1} ) 
-    }
-    addLevel();
-  }
+  const hasas = userAmount.find((like)=> like.userId === user.uid)
 
+  const addLevel = async () =>{
+    if(hasas){
+      console.log("USER Exists")
+    } else{
+      await addDoc(levelRef, {userId: user.uid, username: user.displayName, level: 1} ) 
+    }
+  }
+ 
 
   const createDb = () =>{
     addLevel()
     navigate("/game");
   }
-
+  
   return (
     <div>
        <button onClick={createDb}>PLAY THE GAME</button>
