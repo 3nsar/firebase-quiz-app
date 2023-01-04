@@ -48,10 +48,10 @@ const Main = () => {
 
   },[]) 
 
-  const hasas = userAmount.find((like)=> like.userId === user.uid)
+  const existsUser = userAmount.find((like)=> like.userId === user.uid)
 
   const addLevel = async () =>{
-    if(hasas){
+    if(existsUser){
       console.log("USER Exists")
     } else{
       await addDoc(levelRef, {userId: user.uid, username: user.displayName, level: 1} ) 
@@ -68,7 +68,7 @@ const Main = () => {
     <div>
        <button onClick={createDb}>PLAY THE GAME</button>
        {userAmount.map((item)=>{
-        return <h1>{item.username}</h1>
+        return <h1>{item.username} {item.level}</h1>
        })}
     </div>
   )

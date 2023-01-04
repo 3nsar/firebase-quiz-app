@@ -5,7 +5,7 @@ import Question from '../questions-answers/Question'
 import {addDoc, collection, getDocs, query, updateDoc, where, doc} from "firebase/firestore"
 import {auth, db} from "../config/firebase"
 import { useAuthState } from 'react-firebase-hooks/auth'
-import Main from './Main'
+import { useNavigate } from 'react-router'
 
 const Game = () => {
 
@@ -19,6 +19,9 @@ const Game = () => {
 
   const [user] = useAuthState(auth)
   const levelRef = collection(db, "levels")
+  const [levelAm, setLevelAm] = useState([])
+
+  const navigate = useNavigate()
 
 
   useEffect(()=>{
@@ -58,13 +61,39 @@ const Game = () => {
     setShowAnswer(false)
   }
 
+  const updateLevel = async(id, level) =>{
+    const userDoc = doc(db, "levels", id);
+    const newField = {level: level +1};
+    await updateDoc(userDoc, newField);
+
+  }
+
+  useEffect(()=>{
+    const showLevel = async () =>{
+      const data = await getDocs(levelRef);
+      setLevelAm(data.docs.map((doc)=>({...doc.data(), id: doc.id}))); 
+    }
+    showLevel()
+
+  },[]) 
+
+  useEffect(() => {
+    const getLevel = async () =>{
+    if (currentQuestion >= questions.length && score >= 1) {
+      await updateLevel();
+    }
+    getLevel()
+  }
+}, [currentQuestion])  
+
+
   return questions.length> 0  ? (
     <div>{currentQuestion >= questions.length ? (
       <div>
          <h1>You scored: {score} / 5</h1>
          <li><a href="/game">Play again</a></li> 
          <li><a href="/main">Return</a></li>
-
+    
       </div> 
     ): (
 
