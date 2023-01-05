@@ -2,10 +2,11 @@ import { style } from '@mui/system'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Question from '../questions-answers/Question'
-import {addDoc, collection, getDocs, query, updateDoc, where, doc} from "firebase/firestore"
+import {addDoc, collection, getDocs, query, updateDoc, where, doc, setDoc} from "firebase/firestore"
 import {auth, db} from "../config/firebase"
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useNavigate } from 'react-router'
+import { async } from '@firebase/util'
 
 const Game = () => {
 
@@ -20,8 +21,11 @@ const Game = () => {
   const [user] = useAuthState(auth)
   const levelRef = collection(db, "levels")
   const [levelAm, setLevelAm] = useState([])
+  
 
   const navigate = useNavigate()
+
+
 
 
   useEffect(()=>{
@@ -61,7 +65,7 @@ const Game = () => {
     setShowAnswer(false)
   }
 
-  const updateLevel = async(id, level) =>{
+  const updateLevel = async(id,level) =>{
     const userDoc = doc(db, "levels", id);
     const newField = {level: level +1};
     await updateDoc(userDoc, newField);
@@ -80,11 +84,18 @@ const Game = () => {
   useEffect(() => {
     const getLevel = async () =>{
     if (currentQuestion >= questions.length && score >= 1) {
-      await updateLevel();
+      {levelAm.map((item)=>{
+        return(
+          <div>
+            <h1 onClick={updateLevel(item.id, item.level)}>{item.username} {item.level} </h1>
+          </div>
+        )
+      })}
     }
     getLevel()
   }
-}, [currentQuestion])  
+}, [currentQuestion])
+
 
 
   return questions.length> 0  ? (
@@ -93,7 +104,8 @@ const Game = () => {
          <h1>You scored: {score} / 5</h1>
          <li><a href="/game">Play again</a></li> 
          <li><a href="/main">Return</a></li>
-    
+
+      
       </div> 
     ): (
 
