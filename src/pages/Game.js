@@ -22,11 +22,9 @@ const Game = () => {
   const levelRef = collection(db, "levels")
   const [levelAm, setLevelAm] = useState([])
   
-
+  const [level, setLevel] = useState(localStorage.getItem("level"))
+ 
   const navigate = useNavigate()
-
-
-
 
   useEffect(()=>{
     const fetchPosts = async () =>{
@@ -52,7 +50,7 @@ const Game = () => {
 
   const handleAnswer  = (answer) =>{
     if(!showAnswer){
-    if(answer === questions[currentQuestion].correctAnswer){
+    if(answer === questions[currentQuestion].correctAnswer) {
       setScore(prev => prev +1)
     }
   }
@@ -65,13 +63,6 @@ const Game = () => {
     setShowAnswer(false)
   }
 
-  const updateLevel = async(id,level) =>{
-    const userDoc = doc(db, "levels", id);
-    const newField = {level: level +1};
-    await updateDoc(userDoc, newField);
-
-  }
-
   useEffect(()=>{
     const showLevel = async () =>{
       const data = await getDocs(levelRef);
@@ -82,21 +73,15 @@ const Game = () => {
   },[]) 
 
   useEffect(() => {
-    const getLevel = async () =>{
+    const getLevel = async (id, level) =>{
     if (currentQuestion >= questions.length && score >= 1) {
-      {levelAm.map((item)=>{
-        return(
-          <div>
-            <h1 onClick={updateLevel(item.id, item.level)}>{item.username} {item.level} </h1>
-          </div>
-        )
-      })}
+      const userDoc = doc(db, "levels", id);
+      const newField = {level: level +1};
+      await updateDoc(userDoc, newField);
     }
     getLevel()
   }
-}, [currentQuestion])
-
-
+}, [currentQuestion]) 
 
   return questions.length> 0  ? (
     <div>{currentQuestion >= questions.length ? (
@@ -104,8 +89,12 @@ const Game = () => {
          <h1>You scored: {score} / 5</h1>
          <li><a href="/game">Play again</a></li> 
          <li><a href="/main">Return</a></li>
+         {levelAm.map((item)=>{
+          return(
+            <h1>{item.username} {level}</h1>
+          )
+         })}
 
-      
       </div> 
     ): (
 
