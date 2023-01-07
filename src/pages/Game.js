@@ -21,8 +21,6 @@ const Game = () => {
   const [user] = useAuthState(auth)
   const levelRef = collection(db, "levels")
   const [levelAm, setLevelAm] = useState([])
-  
-  const [level, setLevel] = useState(localStorage.getItem("level"))
  
   const navigate = useNavigate()
 
@@ -72,16 +70,20 @@ const Game = () => {
 
   },[]) 
 
-  useEffect(() => {
-    const getLevel = async (id, level) =>{
-    if (currentQuestion >= questions.length && score >= 1) {
-      const userDoc = doc(db, "levels", id);
-      const newField = {level: level +1};
-      await updateDoc(userDoc, newField);
-    }
-    getLevel()
+  const updateLevel = async (level,id)=> {
+    const userDoc = doc(db, "levels", id);
+    const newField = {level: level +1};
+    await updateDoc(userDoc, newField); 
   }
-}, [currentQuestion]) 
+
+  useEffect(() => {
+    const getLevel = async () =>{
+    if (currentQuestion >= questions.length && score >= 1) {
+        await updateLevel();
+    }
+    getLevel();
+  }
+}, [currentQuestion]);
 
   return questions.length> 0  ? (
     <div>{currentQuestion >= questions.length ? (
@@ -89,11 +91,9 @@ const Game = () => {
          <h1>You scored: {score} / 5</h1>
          <li><a href="/game">Play again</a></li> 
          <li><a href="/main">Return</a></li>
-         {levelAm.map((item)=>{
-          return(
-            <h1>{item.username} {level}</h1>
-          )
-         })}
+         {levelAm.filter(item => item.username === user.displayName).map(filteredItem =>(
+          <button onClick={()=> updateLevel(filteredItem.id, filteredItem.level)}>{filteredItem.username} {filteredItem.level}</button>
+         ))}
 
       </div> 
     ): (
