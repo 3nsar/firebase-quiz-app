@@ -4,11 +4,21 @@ import Navbar from './components/Navbar';
 import Game from './pages/Game';
 import Main from './pages/Main';
 import Login from './pages/Login';
+import { createContext } from 'react';
+import { useState } from 'react';
+
+export const ThemeContext = createContext(null);
 
 
 function App() {
+  const [theme, setTheme] = useState("light");
+
+  const toggleTheme = () =>{
+    setTheme((curr) => (curr === "light" ? "dark" : "light"))
+  }
   return (
-    <div className="App">
+    <ThemeContext.Provider value={{theme, toggleTheme}}>
+    <div className="App" id={theme}>
       <Router>
         <Navbar />
         <Routes>
@@ -18,6 +28,7 @@ function App() {
         </Routes>
       </Router>
     </div>
+    </ThemeContext.Provider>
   );
 }
 
