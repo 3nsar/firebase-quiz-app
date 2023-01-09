@@ -98,8 +98,13 @@ const Game = () => {
          {score >= 1 ? levelAm.filter(item => item.userId === user.uid).map(filteredItem=>(
           <div>
           <h1 key={filteredItem.id}>{filteredItem.username} {filteredItem.level}</h1>
-          <button onClick={()=>updateLevel(filteredItem.id, filteredItem.level)}>NEXT LEVEL</button>
-          <button onClick={()=>updateLevel(filteredItem.id, filteredItem.level)}>RETURN</button>
+          <button onClick={async ()=>{
+            await updateLevel(filteredItem.id, filteredItem.level)
+            window.location.reload(false)}}>NEXT LEVEL</button>
+
+          <button onClick={()=>{
+            navigate("/main")
+            updateLevel(filteredItem.id, filteredItem.level)}}>RETURN</button>
           </div>
          )): <button><a href="/game">Play again</a></button>}
 

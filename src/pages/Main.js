@@ -68,7 +68,7 @@ const Main = () => {
     <div>
        <button onClick={createDb}>PLAY THE GAME</button>
        {userAmount.map((item)=>{
-        return <h1>{item.username} {item.level}</h1>
+        return <h1 key={item.id}>{item.username} {item.level}</h1>
        })}
     </div>
   )
