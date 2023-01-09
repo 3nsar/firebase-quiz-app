@@ -69,22 +69,24 @@ const Game = () => {
     showLevel()
   },[]) 
 
-  const updateLevel = async (level,id)=> {
+  const updateLevel = async (id, level)=> {
     const userDoc = doc(db, "levels", id);
     const newField = {level: level +1};
     await updateDoc(userDoc, newField); 
   }
 
-  useEffect(() => {
+  {/*useEffect(() => {
     const getLevel = async () =>{
     if (currentQuestion >= questions.length && score >= 1) {
-       levelAm.filter(item => item.userId === user.uid).map(filteredItem =>(
-          updateLevel(filteredItem.username, filteredItem.level)
-       ))
-    }
+       levelAm.filter(item => item.userId === user.uid).map(filteredItem =>{
+        return(
+                                                                                                                      
+          updateLevel(filteredItem.id, filteredItem.level ))}
+       )}
+       
     await getLevel();
   }
-}, [currentQuestion]);
+}, [currentQuestion]); */}
 
   return questions.length> 0  ? (
     <div>{currentQuestion >= questions.length ? ( 
@@ -92,9 +94,12 @@ const Game = () => {
          <h1>You scored: {score} / 5</h1>
          <li><a href="/game">Play again</a></li> 
          <li><a href="/main">Return</a></li>
-         {levelAm.map(item =>(
-          <h1>{item.username} {item.level}</h1>
-         ))}   
+         {levelAm.filter(item => item.userId === user.uid).map(filteredItem=>(
+          <div>
+          <h1 key={filteredItem.id}>{filteredItem.username} {filteredItem.level}</h1>
+          <button onClick={()=>updateLevel(filteredItem.id, filteredItem.level)}>UPDATE</button>
+          </div>
+         ))}
 
       </div> 
     ): (

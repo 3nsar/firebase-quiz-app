@@ -23,7 +23,7 @@ const Navbar = ({theme, toggleTheme}) => {
       <ReactSwitch 
             onChange={toggleTheme} 
             checked={theme === "dark"}
-            onColor="#86d3ff"
+            onColor="#be97dc"
             uncheckedIcon={<div
               style={{
                 display: "flex",

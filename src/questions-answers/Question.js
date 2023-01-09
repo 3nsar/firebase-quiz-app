@@ -8,7 +8,6 @@ const Question = ({handleAnswer, handleNextQuestion,showAnswer,score, data: {que
     counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
   }, [counter]);
 
-
   return counter != 0 ?(
     <div className='question-container'>
       <h2><FcAlarmClock />{counter}</h2>
