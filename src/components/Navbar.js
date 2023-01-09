@@ -4,15 +4,12 @@ import { auth } from '../config/firebase'
 import { useAuthState } from "react-firebase-hooks/auth"
 import { signOut } from 'firebase/auth'
 import { useNavigate } from 'react-router'
+import ReactSwitch from 'react-switch';
 
-
-
-
-const Navbar = () => {
+const Navbar = ({theme, toggleTheme}) => {
 
   const [user] = useAuthState(auth)
   const navigate = useNavigate()
-
 
   const signUserOut = async() =>{
     await signOut(auth)
@@ -22,6 +19,7 @@ const Navbar = () => {
 
   return (
     <div className='navbar-container'>
+      <ReactSwitch onChange={toggleTheme} checked={theme === "dark"}/>
        <h1>QUIZ</h1>
        <div>
        {user && (

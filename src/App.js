@@ -9,9 +9,8 @@ import { useState } from 'react';
 
 export const ThemeContext = createContext(null);
 
-
 function App() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
 
   const toggleTheme = () =>{
     setTheme((curr) => (curr === "light" ? "dark" : "light"))
@@ -20,7 +19,7 @@ function App() {
     <ThemeContext.Provider value={{theme, toggleTheme}}>
     <div className="App" id={theme}>
       <Router>
-        <Navbar />
+        <Navbar toggleTheme={ toggleTheme} theme={theme}/>
         <Routes>
         <Route path='/main' element={<Main />}/>
         <Route path='/game' element={<Game />}/>

@@ -6,9 +6,21 @@
 
 body{
 
-  background: #da22ff; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top, #da22ff, #9733ee); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #da22ff, #9733ee);
+  /* background: #da22ff; fallback for old browsers 
+  background: -webkit-linear-gradient(to top, #da22ff, #9733ee); /* Chrome 10-25, Safari 5.1-6 
+  background: linear-gradient(to right, #da22ff, #9733ee); */
+}
+
+#light {
+   background: #da22ff;
+  background: -webkit-linear-gradient(to top, #da22ff, #9733ee);
+  background: linear-gradient(to right, #da22ff, #9733ee); 
+  height: 100vh;
+}
+
+#dark {
+  background-color:	#303030;
+  height: 100vh;
 }
 
 .App {
