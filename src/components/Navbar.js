@@ -5,6 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth"
 import { signOut } from 'firebase/auth'
 import { useNavigate } from 'react-router'
 import ReactSwitch from 'react-switch';
+import {FiMoon} from 'react-icons/fi'
 
 const Navbar = ({theme, toggleTheme}) => {
 
@@ -19,7 +20,34 @@ const Navbar = ({theme, toggleTheme}) => {
 
   return (
     <div className='navbar-container'>
-      <ReactSwitch onChange={toggleTheme} checked={theme === "dark"}/>
+      <ReactSwitch 
+            onChange={toggleTheme} 
+            checked={theme === "dark"}
+            onColor="#86d3ff"
+            uncheckedIcon={<div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100%",
+                fontSize: 20
+              }}
+            >
+              <>&#x1F319;</>
+            </div>}
+            checkedIcon={<div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100%",
+                fontSize: 20
+              }}
+            >
+              <>&#x1F31E;</>
+            </div>}
+          />
+
        <h1>QUIZ</h1>
        <div>
        {user && (
