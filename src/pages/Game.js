@@ -75,6 +75,7 @@ const Game = () => {
     await updateDoc(userDoc, newField); 
   }
 
+
   {/*useEffect(() => {
     const getLevel = async () =>{
     if (currentQuestion >= questions.length && score >= 1) {
@@ -92,14 +93,15 @@ const Game = () => {
     <div>{currentQuestion >= questions.length ? ( 
       <div>
          <h1>You scored: {score} / 5</h1>
-         <li><a href="/game">Play again</a></li> 
-         <li><a href="/main">Return</a></li>
-         {levelAm.filter(item => item.userId === user.uid).map(filteredItem=>(
+         {/*<li><a href="/game">Play again</a></li> 
+         <li><a href="/main">Return</a></li> */}
+         {score >= 1 ? levelAm.filter(item => item.userId === user.uid).map(filteredItem=>(
           <div>
           <h1 key={filteredItem.id}>{filteredItem.username} {filteredItem.level}</h1>
-          <button onClick={()=>updateLevel(filteredItem.id, filteredItem.level)}>UPDATE</button>
+          <button onClick={()=>updateLevel(filteredItem.id, filteredItem.level)}>NEXT LEVEL</button>
+          <button onClick={()=>updateLevel(filteredItem.id, filteredItem.level)}>RETURN</button>
           </div>
-         ))}
+         )): <button><a href="/game">Play again</a></button>}
 
       </div> 
     ): (
