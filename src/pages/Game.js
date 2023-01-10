@@ -116,6 +116,7 @@ const Game = () => {
       showAnswer={showAnswer}
       handleAnswer={handleAnswer}
       handleNextQuestion={handleNextQuestion}
+      
       />
  
     )}</div>
