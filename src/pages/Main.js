@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router'
 
 import React, { useState } from 'react'
 import { useEffect } from "react"
-import { fireEvent } from "@testing-library/react"
-import { FirebaseError } from "firebase/app"
-import { ref } from "firebase/storage"
+import {DiCodeigniter} from "react-icons/di"
+import {FcFlashOn} from "react-icons/fc"
+import { IconContext } from "react-icons";
 
 const Main = () => { 
 
@@ -68,11 +68,15 @@ const Main = () => {
     <div>
      {user && (
       <>
-       <button onClick={createDb}>PLAY THE GAME</button>
+      
+       <IconContext.Provider value={{ color: "orange", size:"20px" ,className: "global-class-name" }}>
+       <button className="start-btn" onClick={createDb}>START THE QUIZ <DiCodeigniter /></button> </IconContext.Provider>
        {userAmount.map((item)=>{
-        return <h1 key={item.id}>{item.username} {item.level}</h1>
-        
-       })}</>)}
+        return(
+            <div className="scoreboard">
+              <p key={item.id}>User: {item.username} / Level: {item.level}</p>
+            </div>
+       )})}</>)}
     </div>
   )
 }

@@ -34,7 +34,6 @@ const Question = ({handleAnswer,handleNextQuestion,showAnswer,currentQuestion,da
   };
 
   const dispSecondsAsMins = (seconds) => {
-    // 25:00
     
     const mins = Math.floor(seconds / 60);
     const seconds_ = seconds % 60;
@@ -45,11 +44,9 @@ const Question = ({handleAnswer,handleNextQuestion,showAnswer,currentQuestion,da
     <div className='question-container'>
   {user && (
       <>
-      <h2><FcAlarmClock />{dispSecondsAsMins(timer)}</h2>
         <div className='question-content'>
+        <h2><FcAlarmClock />{dispSecondsAsMins(timer)}</h2>
           <h2>{question}</h2>
-          
-
           {answers.map((answer) => {
             const bgColor = showAnswer ? answer === correctAnswer ? 'correct-bg' : 'incorrect-bg' : 'white-bg'
           return(
@@ -67,7 +64,7 @@ const Question = ({handleAnswer,handleNextQuestion,showAnswer,currentQuestion,da
         </>)}
     </div>
   ):(
-    <div>
+    <div className='end'>
       <h1>You didn't make it to the end! Try again!</h1>
       <li><a href="/game">Play again</a></li>
       <li><a href="/main">Return</a></li>

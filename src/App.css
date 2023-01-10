@@ -9,6 +9,7 @@ body{
   /* background: #da22ff; fallback for old browsers 
   background: -webkit-linear-gradient(to top, #da22ff, #9733ee); /* Chrome 10-25, Safari 5.1-6 
   background: linear-gradient(to right, #da22ff, #9733ee); */
+
 }
 
 #light {
@@ -42,7 +43,7 @@ body{
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  height: 100vh;
+  margin-top: 4rem;
   
 }
 
@@ -64,7 +65,6 @@ body{
 .question-content h3:hover{
   cursor: pointer;
 }
-
 
 .next-btn{
   padding: .7rem;
@@ -91,4 +91,38 @@ body{
 
 .white-bg{
   background-color:rgb(232, 232, 232);
+}
+
+/*========= MAIN ========*/
+
+.menu{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.start-btn{
+  background-color: #9733EE;
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  font-size: 18px;
+  border: none;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.start-btn:hover{
+  background-color: #551e85;
+  color: white;
+  transition: all 0.6s;
+  cursor: pointer;
+}
+
+.scoreboard{
+  border: 2px solid #551e85;
+  background-color: #303030;
+  width: 50%;
+  padding: 10px;
 }
