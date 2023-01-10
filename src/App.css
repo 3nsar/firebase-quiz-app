@@ -100,6 +100,7 @@ body{
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 25px;
 }
 
 .start-btn{
@@ -109,7 +110,7 @@ body{
   padding: 12px;
   font-size: 18px;
   border: none;
-  margin-top: 20px;
+  margin-top: 25px;
   border-radius: 10px;
 }
 
@@ -121,8 +122,16 @@ body{
 }
 
 .scoreboard{
-  border: 2px solid #551e85;
+  border: 3px solid #551e85;
   background-color: #303030;
-  width: 50%;
+  width: 45%;
+  height: 100px;
+  overflow: hidden;
+  overflow-y: auto;
+  -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+}
+
+.scoreboard p{
   padding: 10px;
 }

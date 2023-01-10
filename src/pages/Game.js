@@ -10,7 +10,7 @@ import { async } from '@firebase/util'
 
 const Game = () => {
 
-  const url = "https://the-trivia-api.com/api/questions?limit=5&difficulty=medium"
+  const url = "https://the-trivia-api.com/api/questions?limit=5&difficulty=easy"
 
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0)

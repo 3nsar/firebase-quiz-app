@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router'
 import React, { useState } from 'react'
 import { useEffect } from "react"
 import {DiCodeigniter} from "react-icons/di"
-import {FcFlashOn} from "react-icons/fc"
+import {FcFlashOn, FcManager} from "react-icons/fc"
 import { IconContext } from "react-icons";
 
 const Main = () => { 
@@ -65,18 +65,20 @@ const Main = () => {
   }
   
   return (
-    <div>
+    <div className="menu">
      {user && (
       <>
-      
-       <IconContext.Provider value={{ color: "orange", size:"20px" ,className: "global-class-name" }}>
-       <button className="start-btn" onClick={createDb}>START THE QUIZ <DiCodeigniter /></button> </IconContext.Provider>
+      <div className="scoreboard">
        {userAmount.map((item)=>{
         return(
-            <div className="scoreboard">
-              <p key={item.id}>User: {item.username} / Level: {item.level}</p>
-            </div>
-       )})}</>)}
+            
+              <p key={item.id}> <>&#x1F9E0;</> {item.username} / <>&#x1F3C6;</> Level {item.level}</p>
+            
+       )})}</div></>)}
+
+        <IconContext.Provider value={{ color: "orange", size:"20px" ,className: "global-class-name" }}>
+       <button className="start-btn" onClick={createDb}>START THE QUIZ <DiCodeigniter /></button>
+       </IconContext.Provider>
     </div>
   )
 }
