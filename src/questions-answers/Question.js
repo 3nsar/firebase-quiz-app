@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { FcAlarmClock } from 'react-icons/fc'
+import {auth, db} from "../config/firebase"
+import { useAuthState } from 'react-firebase-hooks/auth'
+
 
 const Question = ({handleAnswer,handleNextQuestion,showAnswer,currentQuestion,data: {question, correctAnswer, answers}}) => {
   const [timer, setTimer] = useState(60); // 25 minutes
   const [start, setStart] = useState(true);
+  const [user] = useAuthState(auth)
   const firstStart = useRef(true);
   const tick = useRef();
 
@@ -12,7 +16,6 @@ const Question = ({handleAnswer,handleNextQuestion,showAnswer,currentQuestion,da
       firstStart.current = !firstStart.current;
       return;
     }
-  
     if (start) {
          
       tick.current = setInterval(() => {
@@ -40,6 +43,8 @@ const Question = ({handleAnswer,handleNextQuestion,showAnswer,currentQuestion,da
  
   return timer > 0 ?(
     <div className='question-container'>
+  {user && (
+      <>
       <h2><FcAlarmClock />{dispSecondsAsMins(timer)}</h2>
         <div className='question-content'>
           <h2>{question}</h2>
@@ -59,6 +64,7 @@ const Question = ({handleAnswer,handleNextQuestion,showAnswer,currentQuestion,da
              
           )}
         </div>
+        </>)}
     </div>
   ):(
     <div>

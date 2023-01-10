@@ -66,10 +66,13 @@ const Main = () => {
   
   return (
     <div>
+     {user && (
+      <>
        <button onClick={createDb}>PLAY THE GAME</button>
        {userAmount.map((item)=>{
         return <h1 key={item.id}>{item.username} {item.level}</h1>
-       })}
+        
+       })}</>)}
     </div>
   )
 }

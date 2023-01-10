@@ -107,7 +107,7 @@ const Game = () => {
             updateLevel(filteredItem.id, filteredItem.level)}}>RETURN</button>
           </div>
          )): <button><a href="/game">Play again</a></button>}
-
+        
       </div> 
     ): (
 
@@ -118,7 +118,7 @@ const Game = () => {
       handleNextQuestion={handleNextQuestion}
       
       />
- 
+      
     )}</div>
 
   ): (
