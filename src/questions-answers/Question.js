@@ -2,26 +2,24 @@ import React, { useState, useEffect, useRef } from 'react'
 import { FcAlarmClock } from 'react-icons/fc'
 
 const Question = ({handleAnswer,handleNextQuestion,showAnswer,currentQuestion,data: {question, correctAnswer, answers}}) => {
-  const [timer, setTimer] = useState(1500); // 25 minutes
+  const [timer, setTimer] = useState(60); // 25 minutes
   const [start, setStart] = useState(true);
   const firstStart = useRef(true);
   const tick = useRef();
 
   useEffect(() => {
     if (firstStart.current) {
-      console.log("first render, don't run useEffect for timer");
       firstStart.current = !firstStart.current;
       return;
     }
-    console.log("subsequent renders");
-    console.log(start);
+  
     if (start) {
          
       tick.current = setInterval(() => {
         setTimer((timer) => timer - 1);
       }, 1000);
     } else {
-      console.log("clear interval");
+      
       clearInterval(tick.current);
     }
 
@@ -34,13 +32,13 @@ const Question = ({handleAnswer,handleNextQuestion,showAnswer,currentQuestion,da
 
   const dispSecondsAsMins = (seconds) => {
     // 25:00
-    console.log("seconds " + seconds);
+    
     const mins = Math.floor(seconds / 60);
     const seconds_ = seconds % 60;
     return mins.toString() + ":" + (seconds_ == 0 ? "00" : seconds_.toString());
   };
  
-  return timer != 0 ?(
+  return timer > 0 ?(
     <div className='question-container'>
       <h2><FcAlarmClock />{dispSecondsAsMins(timer)}</h2>
         <div className='question-content'>
