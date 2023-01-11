@@ -246,10 +246,22 @@ body{
   flex-direction: column;
  }
 
- .result-circle{
+ .result-circle-positive{
   margin-top: 15px;
   border: 4px solid #00FF7F;
   background-color: #33CC66;
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+
+ .result-circle-negative{
+  margin-top: 15px;
+  border: 4px solid #CC0000;
+  background-color: #FF0033;
   border-radius: 50%;
   height: 150px;
   width: 150px;
