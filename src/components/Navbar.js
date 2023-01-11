@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { auth } from '../config/firebase'
 import { useAuthState } from "react-firebase-hooks/auth"
@@ -15,7 +15,6 @@ const Navbar = ({theme, toggleTheme}) => {
   const signUserOut = async() =>{
     await signOut(auth)
     navigate('/')
-
   }
 
   return (
@@ -49,12 +48,12 @@ const Navbar = ({theme, toggleTheme}) => {
           />
 
        <h1>QUIZ</h1>
-       <div>
+       <div className='profile'>
        {user && (
-            <>
-               <p>{user?.displayName}</p>
-               <img src={user?.photoURL} alt="pic" width="30" height="30"/>
-              <button onClick={signUserOut}>Log Out</button>
+          <>
+             <img src={user?.photoURL} alt="pic" />
+             <p><>&#x1F9E0;</> {user?.displayName}</p>
+             <button onClick={signUserOut}>Log Out</button>
           </>
         )}
        </div>

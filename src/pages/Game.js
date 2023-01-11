@@ -1,5 +1,5 @@
 import { style } from '@mui/system'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, createContext } from 'react'
 import axios from 'axios'
 import Question from '../questions-answers/Question'
 import {addDoc, collection, getDocs, query, updateDoc, where, doc, setDoc} from "firebase/firestore"
@@ -20,9 +20,10 @@ const Game = () => {
 
   const [user] = useAuthState(auth)
   const levelRef = collection(db, "levels")
-  const [levelAm, setLevelAm] = useState([])
+  const [userInfo, setUserInfo] = useState([])
  
   const navigate = useNavigate()
+
 
   useEffect(()=>{
     const fetchPosts = async () =>{
@@ -64,7 +65,7 @@ const Game = () => {
   useEffect(()=>{
     const showLevel = async () =>{
       const data = await getDocs(levelRef);
-      setLevelAm(data.docs.map((doc)=>({...doc.data(), id: doc.id}))); 
+      setUserInfo(data.docs.map((doc)=>({...doc.data(), id: doc.id}))); 
     }
     showLevel()
   },[]) 
@@ -89,13 +90,13 @@ const Game = () => {
   }
 }, [currentQuestion]); */}
 
-  return questions.length> 0  ? (
+  return questions.length > 0  ? (
     <div>{currentQuestion >= questions.length ? ( 
       <div>
          <h1>You scored: {score} / 5</h1>
          {/*<li><a href="/game">Play again</a></li> 
          <li><a href="/main">Return</a></li> */}
-         {score >= 1 ? levelAm.filter(item => item.userId === user.uid).map(filteredItem=>(
+         {score >= 1 ? userInfo.filter(item => item.userId === user.uid).map(filteredItem=>(
           <div>
           <h1 key={filteredItem.id}>{filteredItem.username} {filteredItem.level}</h1>
           <button onClick={async ()=>{
@@ -106,8 +107,8 @@ const Game = () => {
             navigate("/main")
             updateLevel(filteredItem.id, filteredItem.level)}}>RETURN</button>
           </div>
+          
          )): <button><a href="/game">Play again</a></button>}
-        
       </div> 
     ): (
 

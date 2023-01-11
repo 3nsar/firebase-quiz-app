@@ -4,6 +4,7 @@ import {signInWithPopup} from 'firebase/auth'
 import { useNavigate } from 'react-router'
 import {addDoc, collection, getDocs, query, updateDoc, where, docs} from "firebase/firestore"
 import { useAuthState } from 'react-firebase-hooks/auth'
+import {FcGoogle} from "react-icons/fc"
 
 const Login = () => {
 
@@ -19,7 +20,7 @@ const Login = () => {
   return (
     <div>
         <h1>Sign in with Google</h1>
-        <button onClick={signWithGoogle}>Sign in with Google</button>
+        <button className='log-btn' onClick={signWithGoogle}>Sign in with Google <>&#x1F310;</></button>
     </div>
   )
 }

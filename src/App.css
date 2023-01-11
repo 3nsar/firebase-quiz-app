@@ -28,15 +28,6 @@ body{
   font-family: fantasy;
   color: white;
 }
-.navbar-container{
-  background-color: #9733EE;
-  display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
-  max-width: 1500px;
-  align-items: center;
-  padding: 1.5rem;
-}
 
 .question-container{
   display: flex;
@@ -44,7 +35,6 @@ body{
   justify-content: center;
   padding: 1rem;
   margin-top: 4rem;
-  
 }
 
 .question-content{
@@ -129,9 +119,58 @@ body{
   overflow: hidden;
   overflow-y: auto;
   -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;
+  scrollbar-width: none;
 }
 
 .scoreboard p{
   padding: 10px;
 }
+
+/*========= LOGIN ========*/
+
+.log-btn{
+  background-color: #9733EE;
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  font-size: 18px;
+  border: none;
+  margin-top: 25px;
+  border-radius: 10px;
+}
+
+.log-btn:hover{
+  background-color: #551e85;
+  color: white;
+  transition: all 0.6s;
+  cursor: pointer;
+}
+
+/*========= NAVBAR ========*/
+.navbar-container{
+  background-color: #9733EE;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1500px;
+  padding: 1.5rem;
+}
+
+ .profile{
+  display: flex;
+ }
+
+ .profile p{
+  display: inline-block;
+  align-self: flex-end;
+  font-size: 1.2rem;
+  background-color: #303030;
+  border: 3px solid#551e85;
+  padding: 4px;
+ }
+
+ .profile img{
+  border-radius: 50%;
+  height: 40px;
+ }
