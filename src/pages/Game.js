@@ -118,7 +118,7 @@ const Game = () => {
           </div>
           <button className='start-btn' onClick={()=>{
              window.location.reload(false)}}>PLAY AGAIN</button>
-             
+
           <button className='start-btn' onClick={()=>{
             navigate("/main")}}>RETURN</button>
           </>}

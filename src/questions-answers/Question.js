@@ -2,12 +2,15 @@ import React, { useState, useEffect, useRef } from 'react'
 import { FcAlarmClock } from 'react-icons/fc'
 import {auth, db} from "../config/firebase"
 import { useAuthState } from 'react-firebase-hooks/auth'
+import { useNavigate } from 'react-router'
 
 
 const Question = ({handleAnswer,handleNextQuestion,showAnswer,currentQuestion,data: {question, correctAnswer, answers}}) => {
   const [timer, setTimer] = useState(60); // 25 minutes
   const [start, setStart] = useState(true);
   const [user] = useAuthState(auth)
+
+  const navigate = useNavigate()
   const firstStart = useRef(true);
   const tick = useRef();
 
@@ -66,8 +69,11 @@ const Question = ({handleAnswer,handleNextQuestion,showAnswer,currentQuestion,da
   ):(
     <div className='end'>
       <h1>You didn't make it to the end! Try again!</h1>
-      <li><a href="/game">Play again</a></li>
-      <li><a href="/main">Return</a></li>
+      <button className='start-btn' onClick={()=>{
+        window.location.reload(false)}}>PLAY AGAIN</button>
+
+      <button className='start-btn' onClick={()=>{
+        navigate("/main")}}>RETURN</button>
     </div>
   )
 }
