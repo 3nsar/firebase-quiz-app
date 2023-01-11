@@ -46,14 +46,14 @@ const Navbar = ({theme, toggleTheme}) => {
               <>&#x1F31E;</>
             </div>}
           />
-
+        
        <h1>QUIZ</h1>
        <div className='profile'>
        {user && (
           <>
              <img src={user?.photoURL} alt="pic" />
              <p><>&#x1F9E0;</> {user?.displayName}</p>
-             <button onClick={signUserOut}>Log Out</button>
+             <button onClick={signUserOut}>LOG OUT <>&#x1F44B;</></button>
           </>
         )}
        </div>

@@ -168,9 +168,26 @@ body{
   background-color: #303030;
   border: 3px solid#551e85;
   padding: 4px;
+  margin-right: 8px;
  }
 
  .profile img{
   border-radius: 50%;
   height: 40px;
+  margin-right: 8px;
+ }
+
+ .profile button{
+  background-color: #FF1493;
+  border: none;
+  font-size: 12px;
+  border-radius: 10px;
+  padding-left: 4px;
+  padding-right: 4px;
+  color: white;
+ }
+
+ .profile button:hover{
+  cursor: pointer;
+  
  }
