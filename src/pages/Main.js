@@ -79,6 +79,8 @@ const Main = () => {
         <IconContext.Provider value={{ color: "orange", size:"20px" ,className: "global-class-name" }}>
        <button className="start-btn" onClick={createDb}>START THE QUIZ <DiCodeigniter /></button>
        </IconContext.Provider>
+       <button className="start-btn" onClick={()=> navigate("/achievement")}>ACHIEVEMENTS</button>
+       
     </div>
   )
 }

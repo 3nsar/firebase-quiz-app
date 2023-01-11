@@ -6,6 +6,7 @@ import Main from './pages/Main';
 import Login from './pages/Login';
 import { createContext } from 'react';
 import { useState} from 'react';
+import Achievement from './pages/Achievement';
 
 export const ThemeContext = createContext(null);
 
@@ -25,6 +26,7 @@ function App() {
         <Route path='/main' element={<Main />}/>
         <Route path='/game' element={<Game />}/>
         <Route path='/' element={<Login />}/>
+        <Route path='/achievement' element={<Achievement />}/>
         </Routes>
       </Router>
     </div>
