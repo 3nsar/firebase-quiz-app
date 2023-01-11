@@ -18,7 +18,7 @@ const Login = () => {
     }
 
   return (
-    <div>
+    <div className='login'>
         <h1>Sign in with Google</h1>
         <button className='log-btn' onClick={signWithGoogle}>Sign in with Google <>&#x1F310;</></button>
     </div>

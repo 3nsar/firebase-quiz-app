@@ -10,7 +10,7 @@ import { async } from '@firebase/util'
 
 const Game = () => {
 
-  const url = "https://the-trivia-api.com/api/questions?limit=5&difficulty=easy"
+  const url = "https://the-trivia-api.com/api/questions?limit=10&difficulty=easy"
 
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0)
@@ -92,18 +92,18 @@ const Game = () => {
 
   return questions.length > 0  ? (
     <div>{currentQuestion >= questions.length ? ( 
-      <div>
-         <h1>You scored: {score} / 5</h1>
+      <div className='result-positive'>
+         <div className='result-circle'><h1>{score} / 10</h1></div>
          {/*<li><a href="/game">Play again</a></li> 
          <li><a href="/main">Return</a></li> */}
          {score >= 1 ? userInfo.filter(item => item.userId === user.uid).map(filteredItem=>(
-          <div>
-          <h1 key={filteredItem.id}>{filteredItem.username} {filteredItem.level}</h1>
-          <button onClick={async ()=>{
+          <div className='result-btn'>
+          <h2 key={filteredItem.id}><>&#x1F3C6;</> Level {filteredItem.level}</h2>
+          <button className="start-btn" onClick={async ()=>{
             await updateLevel(filteredItem.id, filteredItem.level)
             window.location.reload(false)}}>NEXT LEVEL</button>
 
-          <button onClick={()=>{
+          <button className="start-btn" onClick={()=>{
             navigate("/main")
             updateLevel(filteredItem.id, filteredItem.level)}}>RETURN</button>
           </div>

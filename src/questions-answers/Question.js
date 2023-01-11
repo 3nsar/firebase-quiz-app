@@ -45,18 +45,18 @@ const Question = ({handleAnswer,handleNextQuestion,showAnswer,currentQuestion,da
   {user && (
       <>
         <div className='question-content'>
-        <h2><FcAlarmClock />{dispSecondsAsMins(timer)}</h2>
-          <h2>{question}</h2>
+        <h2 className='clock'><>&#x1F559;</>{dispSecondsAsMins(timer)}</h2>
+          <p className='show-question'>{question}</p>
           {answers.map((answer) => {
             const bgColor = showAnswer ? answer === correctAnswer ? 'correct-bg' : 'incorrect-bg' : 'white-bg'
           return(
-          <h3 className={`${bgColor}`} onClick={() =>{toggleStart(tick)
-           handleAnswer(answer)} }>{answer}</h3> )})}
+          <h4 className={`${bgColor}`} onClick={() =>{toggleStart(tick)
+           handleAnswer(answer)} }>{answer}</h4> )})}
 
           {showAnswer &&(
             <div>
              <button className='next-btn' onClick={()=>{toggleStart(tick)
-              handleNextQuestion(currentQuestion)}}>Next Question</button>
+              handleNextQuestion(currentQuestion)}}>NEXT</button>
              </div>
              
           )}
