@@ -95,11 +95,10 @@ const Game = () => {
       <div className='result-positive'>
          {/*<li><a href="/game">Play again</a></li> 
          <li><a href="/main">Return</a></li> */}
-         {score >= 1 ? userInfo.filter(item => item.userId === user.uid).map(filteredItem=>{
-            const siu = score >= 7 ? "result-circle-positive": "result-circle-negative"
+         {score >= 7 ? userInfo.filter(item => item.userId === user.uid).map(filteredItem=>{
           return(
           <>
-          <div className={`${siu}`}><h1>{score} / 10</h1></div>
+          <div className={"result-circle-positive"}><h1>{score} / 10</h1></div>
           <div className='result-btn'>
           <h2 key={filteredItem.id}><>&#x1F3C6;</> Level {filteredItem.level}</h2>
           <button className="start-btn" onClick={async ()=>{
@@ -112,7 +111,17 @@ const Game = () => {
           </div>
           </>
           
-          )}): <button><a href="/game">Play again</a></button>}
+          )}): 
+          <>
+          <div className={"result-circle-negative"}>
+            <h1>{score} / 10</h1>
+          </div>
+          <button className='start-btn' onClick={()=>{
+             window.location.reload(false)}}>PLAY AGAIN</button>
+             
+          <button className='start-btn' onClick={()=>{
+            navigate("/main")}}>RETURN</button>
+          </>}
       </div> 
     ): (
 
