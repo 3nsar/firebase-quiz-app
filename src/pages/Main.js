@@ -8,6 +8,7 @@ import { useEffect } from "react"
 import {DiCodeigniter} from "react-icons/di"
 import {FcFlashOn, FcManager} from "react-icons/fc"
 import { IconContext } from "react-icons";
+import Achievement from "./Achievement"
 
 const Main = () => { 
 
@@ -48,7 +49,7 @@ const Main = () => {
 
   },[]) 
 
-  const existsUser = userAmount.find((like)=> like.userId === user.uid)
+  const existsUser = userAmount.find((currUser)=> currUser.userId === user.uid)
 
   const addLevel = async () =>{
     if(existsUser){
@@ -58,7 +59,6 @@ const Main = () => {
     }
   }
  
-
   const createDb = () =>{
     addLevel()
     navigate("/game");
@@ -80,7 +80,6 @@ const Main = () => {
        <button className="start-btn" onClick={createDb}>START THE QUIZ <DiCodeigniter /></button>
        </IconContext.Provider>
        <button className="start-btn" onClick={()=> navigate("/achievement")}>ACHIEVEMENTS</button>
-       
     </div>
   )
 }
