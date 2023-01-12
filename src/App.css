@@ -180,10 +180,6 @@ body{
   padding: 1.5rem;
 }
 
-.navbar-container h1{
- margin-left: 180px;
-}
-
  .profile{
   display: flex;
  }
@@ -273,3 +269,5 @@ body{
   align-items: center;
   justify-content: center;
  }
+
+/*========= CARD =========*/

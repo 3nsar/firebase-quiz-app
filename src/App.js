@@ -5,7 +5,7 @@ import Game from './pages/Game';
 import Main from './pages/Main';
 import Login from './pages/Login';
 import { createContext } from 'react';
-import { useState} from 'react';
+import { useState, useEffect} from 'react';
 import Achievement from './pages/Achievement';
 
 export const ThemeContext = createContext(null);
@@ -13,9 +13,11 @@ export const ThemeContext = createContext(null);
 function App() {
   const [theme, setTheme] = useState("light");
   
+  
   const toggleTheme = () =>{
     setTheme((curr) => (curr === "light" ? "dark" : "light"))
   }
+
 
   return (
     <ThemeContext.Provider value={{theme, toggleTheme}}>
