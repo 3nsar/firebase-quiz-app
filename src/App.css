@@ -9,7 +9,7 @@ body{
   /* background: #da22ff; fallback for old browsers 
   background: -webkit-linear-gradient(to top, #da22ff, #9733ee); /* Chrome 10-25, Safari 5.1-6 
   background: linear-gradient(to right, #da22ff, #9733ee); */
-  
+
 }
 
 #light {
@@ -17,6 +17,7 @@ body{
   background: -webkit-linear-gradient(to top, #da22ff, #9733ee);
   background: linear-gradient(to right, #da22ff, #9733ee); 
   height: 100vh;
+  
 }
 
 #dark {
@@ -271,3 +272,19 @@ body{
  }
 
 /*========= CARD =========*/
+.card-slider{
+width: 70%;
+margin: 0 auto;
+}
+
+.card{
+  min-height: 200px;
+  width: 250px;
+  background-color: #551e85;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  border: 5px solid #551e85;
+}
