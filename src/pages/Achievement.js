@@ -5,6 +5,7 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import { useNavigate } from 'react-router'
 
 
 
@@ -13,6 +14,8 @@ const Achievement = () => {
     const [userInfo, setUserInfo] = useState([])
     const [user] = useAuthState(auth)
     const levelRef = collection(db, "levels")
+
+    const navigate = useNavigate()
   
     useEffect(()=>{
         const showLevel = async () =>{
@@ -28,56 +31,56 @@ const Achievement = () => {
       const addLevelAchie10 = ()=>{
         userInfo.filter(item => item.userId === user.uid).map(fitna =>{
             if(fitna.level > 10){
-                return(arr.push(<div className='card'> <>&#x1F3C6;</> </div>),setEmojis(arr))
+                return(arr.push(<div className='card'>  <div>&#x1F996;</div> <p>BABY STEPS</p></div>),setEmojis(arr))
             }
         })
     }    
     const addLevelAchie2 = ()=>{
         userInfo.filter(item => item.userId === user.uid).map(fitna =>{
             if(fitna.level > 2){
-                return(arr.push(<div className='card'> <>&#x1F3C6;</> </div>),setEmojis(arr))
+                return(arr.push(<div className='card'> <div>&#x1F476;</div> <p>BABY STEPS</p></div>),setEmojis(arr))
             }
         })
     }   
     const addLevelAchie15 = ()=>{
         userInfo.filter(item => item.userId === user.uid).map(fitna =>{
             if(fitna.level > 15){
-                return(arr.push(<div className='card'> <>&#x1F3C6;</> </div>),setEmojis(arr))
+                return(arr.push(<div className='card'>  <div>&#x1F98D;</div> <p>BABY STEPS</p></div>),setEmojis(arr))
             }
         })
     }   
     const addLevelAchie20 = ()=>{
         userInfo.filter(item => item.userId === user.uid).map(fitna =>{
             if(fitna.level > 20){
-                return(arr.push(<div className='card'> <>&#x1F3C6;</> </div>),setEmojis(arr))
+                return(arr.push(<div className='card'>  <div>&#x1F47D;</div> <p>BABY STEPS</p></div>),setEmojis(arr))
             }
         })
     }   
     const addLevelAchie8 = ()=>{
         userInfo.filter(item => item.userId === user.uid).map(fitna =>{
             if(fitna.level > 8){
-                return(arr.push(<div className='card'> <>&#x1F3C6;</> </div>),setEmojis(arr))
+                return(arr.push(<div className='card'>  <div>&#x1F47B;</div> <p>BABY STEPS</p></div>),setEmojis(arr))
             }
         })
     }   
     const addLevelAchie25 = ()=>{
         userInfo.filter(item => item.userId === user.uid).map(fitna =>{
             if(fitna.level > 25){
-                return(arr.push(<div className='card'> <>&#x1F3C6;</> </div>),setEmojis(arr))
+                return(arr.push(<div className='card'>  <div>&#x1F9DB;</div> <p>BABY STEPS</p></div>),setEmojis(arr))
             }
         })
     } 
     const addLevelAchie40 = ()=>{
         userInfo.filter(item => item.userId === user.uid).map(fitna =>{
             if(fitna.level > 40){
-                return(arr.push(<div className='card'> <>&#x1F3C6;</> </div>),setEmojis(arr))
+                return(arr.push(<div className='card'>  <div>&#x1F9DF;</div> <p>BABY STEPS</p></div>),setEmojis(arr))
             }
         })
     }   
     const addLevelAchie50 = ()=>{
         userInfo.filter(item => item.userId === user.uid).map(fitna =>{
             if(fitna.level > 50){
-                return(arr.push(<div className='card'> <>&#x1F3C6;</> </div>),setEmojis(arr))
+                return(arr.push(<div className='card'>  <div>&#x1F9D9;</div> <p>MVP</p></div>),setEmojis(arr))
             }
         })
     }   
@@ -133,6 +136,7 @@ const Achievement = () => {
     <div className='card-slider'>
         
     <button className='start-btn' onClick={allAchievemments}>show recodd</button>
+    <button onClick={()=> navigate('/main')}>GO BACK</button>
     <Slider {...settings}>
         {emojis.map(item=>(
               <>{item}</>
