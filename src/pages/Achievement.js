@@ -31,7 +31,7 @@ const Achievement = () => {
       const addLevelAchie10 = ()=>{
         userInfo.filter(item => item.userId === user.uid).map(fitna =>{
             if(fitna.level > 10){
-                return(arr.push(<div className='card'>  <div>&#x1F996;</div> <p>BABY STEPS</p></div>),setEmojis(arr))
+                return(arr.push(<div className='card'>  <div>&#x1F996;</div> <p>DINO</p></div>),setEmojis(arr))
             }
         })
     }    
@@ -45,35 +45,35 @@ const Achievement = () => {
     const addLevelAchie15 = ()=>{
         userInfo.filter(item => item.userId === user.uid).map(fitna =>{
             if(fitna.level > 15){
-                return(arr.push(<div className='card'>  <div>&#x1F98D;</div> <p>BABY STEPS</p></div>),setEmojis(arr))
+                return(arr.push(<div className='card'>  <div>&#x1F98D;</div> <p>KING IN THE JUNGLE</p></div>),setEmojis(arr))
             }
         })
     }   
     const addLevelAchie20 = ()=>{
         userInfo.filter(item => item.userId === user.uid).map(fitna =>{
             if(fitna.level > 20){
-                return(arr.push(<div className='card'>  <div>&#x1F47D;</div> <p>BABY STEPS</p></div>),setEmojis(arr))
+                return(arr.push(<div className='card'>  <div>&#x1F47D;</div> <p>???</p></div>),setEmojis(arr))
             }
         })
     }   
     const addLevelAchie8 = ()=>{
         userInfo.filter(item => item.userId === user.uid).map(fitna =>{
             if(fitna.level > 8){
-                return(arr.push(<div className='card'>  <div>&#x1F47B;</div> <p>BABY STEPS</p></div>),setEmojis(arr))
+                return(arr.push(<div className='card'>  <div>&#x1F47B;</div> <p>GHOSTY</p></div>),setEmojis(arr))
             }
         })
     }   
     const addLevelAchie25 = ()=>{
         userInfo.filter(item => item.userId === user.uid).map(fitna =>{
             if(fitna.level > 25){
-                return(arr.push(<div className='card'>  <div>&#x1F9DB;</div> <p>BABY STEPS</p></div>),setEmojis(arr))
+                return(arr.push(<div className='card'>  <div>&#x1F9DB;</div> <p>VAMPIRE</p></div>),setEmojis(arr))
             }
         })
     } 
     const addLevelAchie40 = ()=>{
         userInfo.filter(item => item.userId === user.uid).map(fitna =>{
             if(fitna.level > 40){
-                return(arr.push(<div className='card'>  <div>&#x1F9DF;</div> <p>BABY STEPS</p></div>),setEmojis(arr))
+                return(arr.push(<div className='card'>  <div>&#x1F9DF;</div> <p>ZOMBIE ATTACK</p></div>),setEmojis(arr))
             }
         })
     }   
@@ -86,7 +86,7 @@ const Achievement = () => {
     }   
 
     const allAchievemments = ()=>{
-        addLevelAchie10()
+        addLevelAchie10();
         addLevelAchie50();
         addLevelAchie40();
         addLevelAchie25();
