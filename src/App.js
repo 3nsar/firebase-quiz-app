@@ -19,8 +19,16 @@ function App() {
     setTheme((curr) => (curr === "light" ? "dark" : "light"))
   }
 
-  const notify = () => toast("GREAT IT WORKED");
-  const notifyAch = ()=> toast("NEW ACHI");
+  const notify = () => toast('WELL DONE!', {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
 
   return (
     <ThemeContext.Provider value={{theme, toggleTheme}}>
@@ -29,7 +37,7 @@ function App() {
         <Navbar toggleTheme={ toggleTheme} theme={theme}/>
         <Routes>
         <Route path='/main' element={<Main />}/>
-        <Route path='/game' element={<Game notify={notify} notifyAch={notifyAch} /> }/>
+        <Route path='/game' element={<Game notify={notify}/> }/>
         <Route path='/' element={<Login />}/>
         <Route path='/achievement' element={<Achievement />}/>
         </Routes>

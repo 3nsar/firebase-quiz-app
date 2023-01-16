@@ -17,8 +17,6 @@ const Achievement = () => {
     const levelRef = collection(db, "levels")
     const [emojis, setEmojis] = useState([]);
     const arr = []
-    const arr2 = []
- 
 
     const navigate = useNavigate()
   
@@ -184,7 +182,6 @@ const Achievement = () => {
               <>{item}</>
         ))}
     </Slider> }
-    <ToastContainer />
 </div>
   )
 }

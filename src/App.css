@@ -52,8 +52,8 @@ body{
 .question-content h4{
   margin-top: .6rem;
   /*padding: .5rem 2rem .5rem 2rem;*/
-  height: 50px;
-  width: 300px;
+  height: 55px;
+  width: 310px;
   text-align: center;
   display: flex;
   align-items: center;
@@ -135,15 +135,29 @@ body{
   cursor: pointer;
 }
 
-.scoreboard{
+#light .scoreboard{
   border: 3px solid #551e85;
   background-color: #303030;
   width: 45%;
-  height: 100px;
+  height: 125px;
   overflow: hidden;
   overflow-y: auto;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;
+  
+}
+
+#dark .scoreboard{
+  border: 3px solid #551e85;
+  background-color: #303030;
+  width: 45%;
+  height: 125px;
+  overflow: hidden;
+  overflow-y: auto;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;
+  box-shadow: 16px 14px 20px #0000008c;
+
 }
 
 .scoreboard p{
@@ -171,7 +185,7 @@ body{
 }
 
 /*========= NAVBAR ========*/
-.navbar-container{
+#light .navbar-container{
   background-color: #9733EE;
   display: flex;
   justify-content: space-between;
@@ -180,6 +194,17 @@ body{
   max-width: 1500px;
   padding: 1.5rem;
 }
+#dark .navbar-container{
+  background-color: #303030;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1500px;
+  padding: 1.5rem;
+  
+}
+
 
  .profile{
   display: flex;

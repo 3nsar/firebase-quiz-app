@@ -72,7 +72,7 @@ const Main = () => {
        {userAmount.map((item)=>{
         return(
             
-        <p key={item.id}> <>&#x1F9E0;</> {item.username} / <>&#x1F3C6;</> Level {item.level}</p>
+        <p key={item.id}> <>&#x1F9E0;</> {item.username} / <>&#x1F3C6;</> {item.level}</p>
             
        )})}</div>
 
