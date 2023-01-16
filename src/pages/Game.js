@@ -79,6 +79,9 @@ const Game = () => {
     await updateDoc(userDoc, newField); 
   }
 
+  useEffect(()=>{
+    notify()
+  },[])
   {/*useEffect(() => {
     const getLevel = async () =>{
     if (currentQuestion >= questions.length && score >= 1) {
@@ -104,15 +107,14 @@ const Game = () => {
           <div className='result-btn'>
           <h2 key={filteredItem.id}><>&#x1F3C6;</> Level {filteredItem.level}</h2>
           <button className="start-btn" onClick={async ()=>{
-            notify()
             await updateLevel(filteredItem.id, filteredItem.level)
             window.location.reload(false)}}>NEXT LEVEL</button>
 
-          <button className="start-btn" onClick={()=>{
+          <button className="start-btn" onClick={async()=>{
             navigate("/main")
-            notify()
             updateLevel(filteredItem.id, filteredItem.level)}}>RETURN</button>
           </div>
+          <ToastContainer />
           </>
           
           )}): 
