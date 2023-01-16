@@ -7,6 +7,8 @@ import Login from './pages/Login';
 import { createContext } from 'react';
 import { useState, useEffect} from 'react';
 import Achievement from './pages/Achievement';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const ThemeContext = createContext(null);
 
@@ -17,6 +19,9 @@ function App() {
     setTheme((curr) => (curr === "light" ? "dark" : "light"))
   }
 
+  const notify = () => toast("GREAT IT WORKED");
+  const notifyAch = ()=> toast("NEW ACHI");
+
   return (
     <ThemeContext.Provider value={{theme, toggleTheme}}>
     <div className="App" id={theme}>
@@ -24,7 +29,7 @@ function App() {
         <Navbar toggleTheme={ toggleTheme} theme={theme}/>
         <Routes>
         <Route path='/main' element={<Main />}/>
-        <Route path='/game' element={<Game />}/>
+        <Route path='/game' element={<Game notify={notify} notifyAch={notifyAch} /> }/>
         <Route path='/' element={<Login />}/>
         <Route path='/achievement' element={<Achievement />}/>
         </Routes>

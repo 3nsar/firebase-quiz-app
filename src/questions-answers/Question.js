@@ -6,13 +6,13 @@ import { useNavigate } from 'react-router'
 
 
 const Question = ({handleAnswer,handleNextQuestion,showAnswer,currentQuestion,data: {question, correctAnswer, answers}}) => {
-  const [timer, setTimer] = useState(60); // 25 minutes
+  const [timer, setTimer] = useState(60);
   const [start, setStart] = useState(true);
   const [user] = useAuthState(auth)
-
-  const navigate = useNavigate()
-  const firstStart = useRef(true);
+  const firstStart = useRef(false);
   const tick = useRef();
+  
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (firstStart.current) {

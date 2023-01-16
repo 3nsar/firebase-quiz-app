@@ -10,7 +10,7 @@ import { async } from '@firebase/util'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Game = () => {
+const Game = ({notify}) => {
 
   const url = "https://the-trivia-api.com/api/questions?limit=10&difficulty=easy"
 
@@ -23,8 +23,7 @@ const Game = () => {
   const [user] = useAuthState(auth)
   const levelRef = collection(db, "levels")
   const [userInfo, setUserInfo] = useState([])
-  const notify = () => toast("Wow so easy!");
- 
+  
   const navigate = useNavigate()
 
 

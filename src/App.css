@@ -294,11 +294,14 @@ margin: 0 auto;
 }
 
 .card p{
-  margin-top: 40px;
+  margin-top: 20px;
   font-size: 20px;
   font-weight: 800;
 }
 
+ h5{
+  margin-top: 5px;
+}
 
 .slick-slide > div {
     margin: 0 10px;

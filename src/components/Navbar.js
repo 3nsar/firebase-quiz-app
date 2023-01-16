@@ -52,7 +52,7 @@ const Navbar = ({theme, toggleTheme}) => {
        {user && (
           <>
              <img src={user?.photoURL} alt="pic" />
-             <p><>&#x1F9E0;</> {user?.displayName}</p>
+             <p><>&#x1F9E0;</> {user.displayName}</p>
              <button onClick={signUserOut}>LOG OUT <>&#x1F44B;</></button>
           </>
         )}
