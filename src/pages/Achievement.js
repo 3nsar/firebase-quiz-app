@@ -175,8 +175,8 @@ const Achievement = () => {
   return (
  <div className='card-slider'>
 
-    <button className= 'start-btn' onClick={allAchievemments}>show records</button>
-    <button onClick={()=> navigate('/main')}> <>&#x21A9; </></button>
+    <button className= 'start-btn' onClick={allAchievemments}>SHOW COLLECTION</button>
+    <button className="back-btn" onClick={()=> navigate('/main')}> <>&#x21A9; </></button>
     <Slider {...settings}>
         {emojis.map(item=>(
               <>{item}</>
