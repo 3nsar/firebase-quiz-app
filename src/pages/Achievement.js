@@ -172,16 +172,18 @@ const Achievement = () => {
         ]
       };
 
+    const [show, setShow]= useState(true)
+
   return (
  <div className='card-slider'>
 
-    <button className= 'start-btn' onClick={allAchievemments}>SHOW COLLECTION</button>
+    <button className= 'start-btn' onClick={()=> {return setShow(!show),allAchievemments()}}>COLLECTION</button>
     <button className="back-btn" onClick={()=> navigate('/main')}> <>&#x21A9; </></button>
-    <Slider {...settings}>
+    {show &&<Slider {...settings}>
         {emojis.map(item=>(
               <>{item}</>
         ))}
-    </Slider>
+    </Slider> }
     <ToastContainer />
 </div>
   )
