@@ -63,7 +63,7 @@ const Main = () => {
     addLevel()
     navigate("/game");
   }
-  
+
   return (
     <div className="menu">
      {user && (

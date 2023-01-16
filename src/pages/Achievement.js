@@ -15,6 +15,10 @@ const Achievement = () => {
     const [user] = useAuthState(auth)
     const levelRef = collection(db, "levels")
 
+    const [emojis, setEmojis] = useState([]);
+    const arr = []
+ 
+
     const navigate = useNavigate()
   
     useEffect(()=>{
@@ -25,9 +29,6 @@ const Achievement = () => {
         showLevel()
       },[])
   
-      const [emojis, setEmojis] = useState([]);
-      const arr = []
-   
       const addLevelAchie10 = ()=>{
         userInfo.filter(item => item.userId === user.uid).map(fitna =>{
             if(fitna.level > 10){
@@ -85,7 +86,7 @@ const Achievement = () => {
         })
     }   
 
-    const allAchievemments = ()=>{
+ const allAchievemments = ()=>{
         addLevelAchie10();
         addLevelAchie50();
         addLevelAchie40();
@@ -95,7 +96,7 @@ const Achievement = () => {
         addLevelAchie15();
         addLevelAchie2();
         addLevelAchie20();
-    }
+    }  
 
     var settings = {
         dots: true,
@@ -133,16 +134,16 @@ const Achievement = () => {
       };
 
   return (
-    <div className='card-slider'>
-        
-    <button className='start-btn' onClick={allAchievemments}>show recodd</button>
+ <div className='card-slider'>
+
+    <button onClick={allAchievemments}>show records</button>
     <button onClick={()=> navigate('/main')}>GO BACK</button>
     <Slider {...settings}>
         {emojis.map(item=>(
               <>{item}</>
         ))}
     </Slider>
-    </div>
+</div>
   )
 }
 

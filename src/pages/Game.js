@@ -7,6 +7,8 @@ import {auth, db} from "../config/firebase"
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useNavigate } from 'react-router'
 import { async } from '@firebase/util'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Game = () => {
 
@@ -21,6 +23,7 @@ const Game = () => {
   const [user] = useAuthState(auth)
   const levelRef = collection(db, "levels")
   const [userInfo, setUserInfo] = useState([])
+  const notify = () => toast("Wow so easy!");
  
   const navigate = useNavigate()
 
@@ -76,7 +79,6 @@ const Game = () => {
     await updateDoc(userDoc, newField); 
   }
 
-
   {/*useEffect(() => {
     const getLevel = async () =>{
     if (currentQuestion >= questions.length && score >= 1) {
@@ -102,11 +104,13 @@ const Game = () => {
           <div className='result-btn'>
           <h2 key={filteredItem.id}><>&#x1F3C6;</> Level {filteredItem.level}</h2>
           <button className="start-btn" onClick={async ()=>{
+            notify()
             await updateLevel(filteredItem.id, filteredItem.level)
             window.location.reload(false)}}>NEXT LEVEL</button>
 
           <button className="start-btn" onClick={()=>{
             navigate("/main")
+            notify()
             updateLevel(filteredItem.id, filteredItem.level)}}>RETURN</button>
           </div>
           </>
