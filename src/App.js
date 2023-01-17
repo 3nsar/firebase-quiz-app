@@ -13,10 +13,20 @@ import 'react-toastify/dist/ReactToastify.css';
 export const ThemeContext = createContext(null);
 
 function App() {
-  const [theme, setTheme] = useState("light");
 
-  const toggleTheme = () =>{
-    setTheme((curr) => (curr === "light" ? "dark" : "light"))
+  const getThemeInStorage = () => {
+    return localStorage.getItem('theme') || 'light'; // default to light if not set
+  };
+  
+  const [theme, setTheme] = useState(getThemeInStorage());
+  
+  const setThemeInStorage = (theme) => {
+    localStorage.setItem('theme', theme);
+    setTheme(theme);
+  }
+  
+  const toggleTheme = () => {
+    setThemeInStorage(theme === 'light' ? 'dark' : 'light');
   }
 
   const notify = () => toast('WELL DONE!', {
