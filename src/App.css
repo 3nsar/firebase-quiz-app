@@ -306,6 +306,14 @@ body{
   margin-bottom: 15px;
  }
 
+ .end{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 50px;
+ }
+
 
 /*========= CARD =========*/
 .card-slider{

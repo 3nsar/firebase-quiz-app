@@ -122,7 +122,7 @@ const Game = ({notify}) => {
           <div className={"result-circle-negative"}>
             <h1>{score} / 10</h1>
           </div>
-          <h1>YOU DIDN'T SCORE ENOUGH! TRY AGAIN!</h1>
+          <h1>YOU DIDN'T SCORE ENOUGH!</h1>
           <button className='start-btn' onClick={()=>{
              window.location.reload(false)}}>PLAY AGAIN</button>
 

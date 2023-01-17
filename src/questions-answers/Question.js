@@ -68,7 +68,7 @@ const Question = ({handleAnswer,handleNextQuestion,showAnswer,currentQuestion,da
     </div>
   ):(
     <div className='end'>
-      <h1>You didn't make it to the end! Try again!</h1>
+      <h1>TIME IS UP!</h1>
       <button className='start-btn' onClick={()=>{
         window.location.reload(false)}}>PLAY AGAIN</button>
 
