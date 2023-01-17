@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router'
 import { async } from '@firebase/util'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { BarLoader} from 'react-spinners'
 
 const Game = ({notify}) => {
 
@@ -142,7 +143,7 @@ const Game = ({notify}) => {
     )}</div>
 
   ): (
-    <h3>Loading...</h3>
+    <h1>loading..</h1>
   );
 }
 

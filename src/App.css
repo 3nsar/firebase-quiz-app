@@ -209,9 +209,14 @@ body{
   width:100%;
 }
 
+ .navbar-container h1{
+  margin-left: 180px;
+ }
+
 
  .profile{
   display: flex;
+
  }
 
  .profile p{

@@ -38,7 +38,6 @@ const Main = () => {
   const [userAmount, setUserAmount] = useState([])
   const levelRef = collection(db, "levels");
 
-
    useEffect(()=>{
     const getUsers = async () =>{
       const data = await getDocs(levelRef)
@@ -46,7 +45,6 @@ const Main = () => {
     };
 
     getUsers()
-
   },[]) 
 
   const existsUser = userAmount.find((currUser)=> currUser.userId === user.uid)
