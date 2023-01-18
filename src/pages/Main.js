@@ -9,6 +9,8 @@ import {DiCodeigniter} from "react-icons/di"
 import {FcFlashOn, FcManager} from "react-icons/fc"
 import { IconContext } from "react-icons";
 import Achievement from "./Achievement"
+import { ThreeDots } from  'react-loader-spinner'
+
 
 const Main = () => { 
 
@@ -37,11 +39,11 @@ const Main = () => {
   const navigate = useNavigate()
   const [userAmount, setUserAmount] = useState([])
   const levelRef = collection(db, "levels");
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
+
 
    useEffect(()=>{
     const getUsers = async () =>{
-      setLoading(true)
       const data = await getDocs(levelRef)
       setUserAmount(data.docs.map((doc)=> ({...doc.data(), id: doc.id  })));
     };
@@ -66,8 +68,21 @@ const Main = () => {
   }
 
   return (
-    <div className="menu">
-     {user && (
+    <div className="menu"> 
+    {loading ? <div className='loader'>
+      <ThreeDots 
+        height="80" 
+        width="80" 
+        radius="9"
+        color="#FF1493" 
+        ariaLabel="three-dots-loading"
+        wrapperStyle={{}}
+        wrapperClassName=""
+        visible={true}
+      />
+    </div>
+:
+     user && (
       <>
       <div className="scoreboard">
        {userAmount.map((item)=>{
@@ -82,6 +97,7 @@ const Main = () => {
        </IconContext.Provider>
        <button className="purple-btn" onClick={()=> navigate("/achievement")}>ACHIEVEMENTS</button>
        </>)}
+      
     </div> 
   )
 }

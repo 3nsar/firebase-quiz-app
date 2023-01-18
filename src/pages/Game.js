@@ -20,8 +20,6 @@ const Game = ({notify}) => {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [score, setScore] = useState(0)
   const [showAnswer, setShowAnswer] = useState(false)
-  const [loading, setLoading] = useState(false)
-
   const [user] = useAuthState(auth)
   const levelRef = collection(db, "levels")
   const [userInfo, setUserInfo] = useState([])
@@ -31,7 +29,7 @@ const Game = ({notify}) => {
 
   useEffect(()=>{
     const fetchPosts = async () =>{
-     setLoading(true)
+  
       const res = await axios.get(url);
   
       const questions = res.data.map((question)=>
@@ -48,7 +46,7 @@ const Game = ({notify}) => {
 
     }
   fetchPosts()
-  setLoading(false)
+
   }, [])
 
   const handleAnswer  = (answer) =>{
