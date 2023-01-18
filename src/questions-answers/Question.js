@@ -69,10 +69,10 @@ const Question = ({handleAnswer,handleNextQuestion,showAnswer,currentQuestion,da
   ):(
     <div className='end'>
       <h1>TIME IS UP!</h1>
-      <button className='start-btn' onClick={()=>{
+      <button className='purple-btn' onClick={()=>{
         window.location.reload(false)}}>PLAY AGAIN</button>
 
-      <button className='start-btn' onClick={()=>{
+      <button className='purple-btn' onClick={()=>{
         navigate("/main")}}>RETURN</button>
     </div>
   )

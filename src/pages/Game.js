@@ -9,7 +9,8 @@ import { useNavigate } from 'react-router'
 import { async } from '@firebase/util'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { BarLoader} from 'react-spinners'
+
+import { ThreeDots } from  'react-loader-spinner'
 
 const Game = ({notify}) => {
 
@@ -105,12 +106,12 @@ const Game = ({notify}) => {
           <>
           <div className={"result-circle-positive"}><h1>{score} / 10</h1></div>
           <div className='result-btn'>
-          <h2 key={filteredItem.id}><>&#x1F3C6;</> Level {filteredItem.level}</h2>
-          <button className="start-btn" onClick={async ()=>{
+          <h2 key={filteredItem.id}><>&#x1F3C6;</> LEVEL {filteredItem.level}</h2>
+          <button className="purple-btn" onClick={async ()=>{
             await updateLevel(filteredItem.id, filteredItem.level)
             window.location.reload(false)}}>NEXT LEVEL</button>
 
-          <button className="start-btn" onClick={async()=>{
+          <button className="purple-btn" onClick={async()=>{
             navigate("/main")
             updateLevel(filteredItem.id, filteredItem.level)}}>RETURN</button>
           </div>
@@ -123,10 +124,10 @@ const Game = ({notify}) => {
             <h1>{score} / 10</h1>
           </div>
           <h1>YOU DIDN'T SCORE ENOUGH!</h1>
-          <button className='start-btn' onClick={()=>{
+          <button className='purple-btn' onClick={()=>{
              window.location.reload(false)}}>PLAY AGAIN</button>
 
-          <button className='start-btn' onClick={()=>{
+          <button className='purple-btn' onClick={()=>{
             navigate("/main")}}>RETURN</button>
           </>}
       </div> 
@@ -143,7 +144,18 @@ const Game = ({notify}) => {
     )}</div>
 
   ): (
-    <h1>loading..</h1>
+    <div className='loader'>
+      <ThreeDots 
+        height="80" 
+        width="80" 
+        radius="9"
+        color="#FF1493" 
+        ariaLabel="three-dots-loading"
+        wrapperStyle={{}}
+        wrapperClassName=""
+        visible={true}
+      />
+    </div>
   );
 }
 

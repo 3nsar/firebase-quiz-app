@@ -37,14 +37,17 @@ const Main = () => {
   const navigate = useNavigate()
   const [userAmount, setUserAmount] = useState([])
   const levelRef = collection(db, "levels");
+  const [loading, setLoading] = useState(false)
 
    useEffect(()=>{
     const getUsers = async () =>{
+      setLoading(true)
       const data = await getDocs(levelRef)
       setUserAmount(data.docs.map((doc)=> ({...doc.data(), id: doc.id  })));
     };
 
-    getUsers()
+    getUsers();
+    setLoading(false)
   },[]) 
 
   const existsUser = userAmount.find((currUser)=> currUser.userId === user.uid)
@@ -70,14 +73,14 @@ const Main = () => {
        {userAmount.map((item)=>{
         return(
             
-        <p key={item.id}> <>&#x1F9E0;</> {item.username} / <>&#x1F3C6;</> {item.level}</p>
+        <p key={item.id}> <>&#x1F9E0;</> {item.username} / <>&#x1F3C6;</> LEVEL {item.level}</p>
             
        )})}</div>
 
         <IconContext.Provider value={{ color: "orange", size:"20px" ,className: "global-class-name" }}>
-       <button className="start-btn" onClick={createDb}>START THE QUIZ <DiCodeigniter /></button>
+       <button className="purple-btn" onClick={createDb}>START THE QUIZ <DiCodeigniter /></button>
        </IconContext.Provider>
-       <button className="start-btn" onClick={()=> navigate("/achievement")}>ACHIEVEMENTS</button>
+       <button className="purple-btn" onClick={()=> navigate("/achievement")}>ACHIEVEMENTS</button>
        </>)}
     </div> 
   )
