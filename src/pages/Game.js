@@ -1,7 +1,7 @@
 import { style } from '@mui/system'
 import React, { useState, useEffect, createContext } from 'react'
 import axios from 'axios'
-import Question from '../questions-answers/Question'
+import Question from '../questions/Question'
 import {addDoc, collection, getDocs, query, updateDoc, where, doc, setDoc} from "firebase/firestore"
 import {auth, db} from "../config/firebase"
 import { useAuthState } from 'react-firebase-hooks/auth'
@@ -121,7 +121,7 @@ const Game = ({notify}) => {
           <div className={"result-circle-negative"}>
             <h1>{score} / 10</h1>
           </div>
-          <h1>YOU DIDN'T SCORE ENOUGH!</h1>
+          <h1 className='negative-msg'>YOU DIDN'T SCORE ENOUGH!</h1>
           <button className='purple-btn' onClick={()=>{
              window.location.reload(false)}}>PLAY AGAIN</button>
 

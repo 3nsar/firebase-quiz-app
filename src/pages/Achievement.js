@@ -164,7 +164,8 @@ const Achievement = () => {
             breakpoint: 610,
             settings: {
               slidesToShow: 1,
-              slidesToScroll: 1
+              slidesToScroll: 1,
+              dots: false
             }
           }
         ]

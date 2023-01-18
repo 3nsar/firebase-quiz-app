@@ -171,6 +171,60 @@ body{
   margin-top: 30px;
 }
 
+@media(max-width:850px){
+
+  #light .scoreboard{
+    border: 3px solid #551e85;
+    background-color: #303030;
+    width: 50%;
+    height: 125px;
+    overflow: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  
+  }
+
+  #dark .scoreboard{
+    border: 3px solid #551e85;
+    background-color: #303030;
+    width: 50%;
+    height: 125px;
+    overflow: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+    box-shadow: 16px 14px 20px #0000008c;
+  
+  }
+
+  @media(max-width:600px){
+    #light .scoreboard{
+      border: 3px solid #551e85;
+      background-color: #303030;
+      width: 80%;
+      height: 125px;
+      overflow: hidden;
+      overflow-y: auto;
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  
+    }
+  
+    #dark .scoreboard{
+      border: 3px solid #551e85;
+      background-color: #303030;
+      width: 80%;
+      height: 125px;
+      overflow: hidden;
+      overflow-y: auto;
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;
+      box-shadow: 16px 14px 20px #0000008c;
+    
+    }
+  }
+
+}
+
 /*========= LOGIN ========*/
 
 .log-btn{
@@ -205,7 +259,7 @@ body{
   background-color: #303030;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items:center;
   margin: 0 auto;
   max-width: 1500px;
   padding: 1.5rem;
@@ -217,7 +271,7 @@ body{
 }
 
 .navbar-container h1{
-  margin-left: 225px;
+  margin-left: 230px;
 }
 
  .profile{
@@ -271,6 +325,43 @@ body{
   justify-content: center;
   flex-direction: column;
   margin-top: 100px;
+ }
+
+ @media(max-width:850px){
+  .profile-name{
+    display: none;
+  }
+  .navbar-container h1{
+    margin-left: 80px;
+  }
+ }
+
+ @media (max-width: 500px){
+
+  .profile img{
+    border-radius: 50%;
+    height: 30px;
+    margin-right: 4px;
+   }
+   .profile button{
+    background-color: #FF1493;
+    border: none;
+    font-size: 7px;
+    border-radius: 5px;
+    padding-left: 4px;
+    padding-right: 4px;
+    color: white;
+    font-weight: 600;
+   }
+
+   .navbar-container h1{
+    margin-right: 40px;
+  }
+  .negative-msg{
+    font-size: 25px;
+  }
+  
+  
  }
 
  /*======== RESULT ========*/
@@ -327,7 +418,6 @@ body{
   flex-direction: column;
   margin-top: 50px;
  }
-
 
 /*========= CARD =========*/
 .card-slider{
