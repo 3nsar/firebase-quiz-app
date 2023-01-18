@@ -216,19 +216,31 @@ body{
   width:100%;
 }
 
+.navbar-container h1{
+  margin-left: 225px;
+}
+
  .profile{
   display: flex;
 
  }
 
  .profile p{
-  display: inline-block;
-  align-self: flex-end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 1.2rem;
+ }
+
+ .profile-name{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid #FF1493;
   background-color: #303030;
-  border: 3px solid#551e85;
-  padding: 4px;
+  width: 175px;
   margin-right: 8px;
+  border-radius: 10px;
  }
 
  .profile img{

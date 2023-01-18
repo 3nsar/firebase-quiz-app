@@ -47,7 +47,6 @@ const Main = () => {
       const data = await getDocs(levelRef)
       setUserAmount(data.docs.map((doc)=> ({...doc.data(), id: doc.id  })));
     };
-
     getUsers();
     setLoading(false)
   },[]) 

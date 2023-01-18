@@ -18,7 +18,9 @@ const Navbar = ({theme, toggleTheme}) => {
   }
 
   return (
-    <div className='navbar-container'>
+  <div className='navbar-container'>
+    {user && (
+     <>
       <ReactSwitch 
             onChange={toggleTheme} 
             checked={theme === "dark"}
@@ -49,14 +51,15 @@ const Navbar = ({theme, toggleTheme}) => {
         
        <h1>QUIZ</h1>
        <div className='profile'>
-       {user && (
-          <>
              <img src={user?.photoURL} alt="pic" />
-             <p><>&#x1F9E0;</> {user.displayName}</p>
+              <div className='profile-name'>
+                <p><>&#x1F9E0;</> {user?.displayName.length > 10 ? user?.displayName.slice(0,10)+"..." : user?.displayName}</p>
+              </div>
              <button onClick={signUserOut}>LOG OUT <>&#x1F44B;</></button>
-          </>
-        )}
+
        </div>
+      </>
+      )}
     </div>
   )
 }
