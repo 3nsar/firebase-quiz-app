@@ -144,16 +144,16 @@ const Achievement = () => {
         initialSlide: 0,
         responsive: [
           {
-            breakpoint: 1024,
+            breakpoint: 1224,
             settings: {
               slidesToShow: 3,
               slidesToScroll: 3,
-              infinite: true,
+              infinite: false,
               dots: true
             }
           },
           {
-            breakpoint: 600,
+            breakpoint: 900,
             settings: {
               slidesToShow: 2,
               slidesToScroll: 2,
@@ -161,7 +161,7 @@ const Achievement = () => {
             }
           },
           {
-            breakpoint: 480,
+            breakpoint: 610,
             settings: {
               slidesToShow: 1,
               slidesToScroll: 1
