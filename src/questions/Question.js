@@ -53,7 +53,7 @@ const Question = ({handleAnswer,handleNextQuestion,showAnswer,currentQuestion,da
           {answers.map((answer) => {
             const bgColor = showAnswer ? answer === correctAnswer ? 'correct-bg' : 'incorrect-bg' : 'white-bg'
           return(
-          <h4 className={`${bgColor}`} onClick={() =>{toggleStart(tick)
+          <h4 key={answer.id} className={`${bgColor}`} onClick={() =>{toggleStart(tick)
            handleAnswer(answer)} }>{answer}</h4> )})}
 
           {showAnswer &&(

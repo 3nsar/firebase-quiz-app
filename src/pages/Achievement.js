@@ -31,72 +31,72 @@ const Achievement = () => {
       const addLevelAchie10 = ()=>{
         userInfo.filter(item => item.userId === user.uid).map(filteredItem =>{
             if(filteredItem.level > 9){
-                return(arr.push(<div className='card'>  <div>&#x1F996;</div> <p>DINO</p> <h5 className='subtitle'>Level 10</h5></div>),setEmojis(arr))
+                return(arr.push(<div className='card' >  <div>&#x1F996;</div> <p>DINO</p> <h5 className='subtitle'>Level 10</h5></div>),setEmojis(arr))
             }else{
-                return(arr.push(<div className='card'> <div>?</div> <h5 className='subtitle'>Level 10</h5></div>),setEmojis(arr))
+                return(arr.push(<div className='card' > <div>?</div> <h5 className='subtitle'>Level 10</h5></div>),setEmojis(arr))
             }
         })
     }    
     const addLevelAchie2 = ()=>{
         userInfo.filter(item => item.userId === user.uid).map(filteredItem =>{
             if(filteredItem.level > 2){
-                return(arr.push(<div className='card'> <div>&#x1F476;</div> <p>BABY STEPS</p> <h5 className='subtitle'>Level 3</h5></div>),setEmojis(arr))
+                return(arr.push(<div className='card' > <div>&#x1F476;</div> <p>BABY STEPS</p> <h5 className='subtitle'>Level 3</h5></div>),setEmojis(arr))
             }else{
-                return(arr.push(<div className='card'> <div>?</div> <h5 className='subtitle'>Level 3</h5></div>),setEmojis(arr))
+                return(arr.push(<div className='card' > <div>?</div> <h5 className='subtitle'>Level 3</h5></div>),setEmojis(arr))
             }
         })
     }   
     const addLevelAchie15 = ()=>{
         userInfo.filter(item => item.userId === user.uid).map(filteredItem =>{
             if(filteredItem.level > 14){
-                return(arr.push(<div className='card'>  <div>&#x1F98D;</div> <p>GORILLA</p> <h5 className='subtitle'>Level 15</h5></div>),setEmojis(arr))
+                return(arr.push(<div className='card' >  <div>&#x1F98D;</div> <p>GORILLA</p> <h5 className='subtitle'>Level 15</h5></div>),setEmojis(arr))
             }else{
-                return(arr.push(<div className='card'> <div>?</div> <h5 className='subtitle'>Level 15</h5></div>),setEmojis(arr))
+                return(arr.push(<div className='card' > <div>?</div> <h5 className='subtitle'>Level 15</h5></div>),setEmojis(arr))
             }
         })
     }   
     const addLevelAchie20 = ()=>{
         userInfo.filter(item => item.userId === user.uid).map(filteredItem =>{
             if(filteredItem.level > 19){
-                return(arr.push(<div className='card'>  <div>&#x1F47D;</div> <p>ALIEN</p> <h5 className='subtitle'>Level 20</h5></div>),setEmojis(arr))
+                return(arr.push(<div className='card' >  <div>&#x1F47D;</div> <p>ALIEN</p> <h5 className='subtitle'>Level 20</h5></div>),setEmojis(arr))
             }else{
-                return(arr.push(<div className='card'> <div>?</div> <h5 className='subtitle'>Level 20</h5></div>),setEmojis(arr))
+                return(arr.push(<div className='card' > <div>?</div> <h5 className='subtitle'>Level 20</h5></div>),setEmojis(arr))
             }
         })
     }   
     const addLevelAchie43 = ()=>{
         userInfo.filter(item => item.userId === user.uid).map(filteredItem =>{
             if(filteredItem.level > 42){
-                return(arr.push(<div className='card'>  <div>&#x1F47B;</div> <p>GHOST</p> <h5 className='subtitle'>Level 43</h5></div>),setEmojis(arr))
+                return(arr.push(<div className='card' >  <div>&#x1F47B;</div> <p>GHOST</p> <h5 className='subtitle'>Level 43</h5></div>),setEmojis(arr))
             }else{
-                return(arr.push(<div className='card'> <div>?</div> <h5 className='subtitle'>Level 43</h5></div>),setEmojis(arr))
+                return(arr.push(<div className='card' > <div>?</div> <h5 className='subtitle'>Level 43</h5></div>),setEmojis(arr))
             }
         })
     }   
     const addLevelAchie25 = ()=>{
         userInfo.filter(item => item.userId === user.uid).map(filteredItem =>{
             if(filteredItem.level > 24){
-                return(arr.push(<div className='card'>  <div>&#x1F9DB;</div> <p>VAMPIRE</p> <h5 className='subtitle'>Level 25</h5></div>),setEmojis(arr))
+                return(arr.push(<div className='card' >  <div>&#x1F9DB;</div> <p>VAMPIRE</p> <h5 className='subtitle'>Level 25</h5></div>),setEmojis(arr))
             }else{
-                return(arr.push(<div className='card'> <div>?</div> <h5 className='subtitle'>Level 25</h5></div>),setEmojis(arr))
+                return(arr.push(<div className='card' > <div>?</div> <h5 className='subtitle'>Level 25</h5></div>),setEmojis(arr))
             }
         })
     } 
     const addLevelAchie40 = ()=>{
         userInfo.filter(item => item.userId === user.uid).map(filteredItem =>{
             if(filteredItem.level > 39){
-                return(arr.push(<div className='card'>  <div>&#x1F9DF;</div> <p>ZOMBIE</p> <h5 className='subtitle'>Level 40</h5></div>),setEmojis(arr))
+                return(arr.push(<div className='card' >  <div>&#x1F9DF;</div> <p>ZOMBIE</p> <h5 className='subtitle'>Level 40</h5></div>),setEmojis(arr))
             }else{
-                return(arr.push(<div className='card'> <div>?</div> <h5 className='subtitle'>Level 40</h5></div>),setEmojis(arr))
+                return(arr.push(<div className='card' > <div>?</div> <h5 className='subtitle'>Level 40</h5></div>),setEmojis(arr))
             }
         })
     }   
     const addLevelAchie50 = ()=>{
         userInfo.filter(item => item.userId === user.uid).map(filteredItem =>{
             if(filteredItem.level > 49){
-                return(arr.push(<div className='card'>  <div>&#x1F9D9;</div> <p>MVP</p> <h5 className='subtitle'>Level 50</h5></div>),setEmojis(arr))
+                return(arr.push(<div className='card' >  <div>&#x1F9D9;</div> <p>MVP</p> <h5 className='subtitle'>Level 50</h5></div>),setEmojis(arr))
             }else{
-                return(arr.push(<div className='card'> <div>?</div> <h5 className='subtitle'>Level 50</h5></div>),setEmojis(arr))
+                return(arr.push(<div className='card' > <div>?</div> <h5 className='subtitle'>Level 50</h5></div>),setEmojis(arr))
             }
         })
     }
@@ -104,9 +104,9 @@ const Achievement = () => {
     const addLevelAchie30 = ()=>{
         userInfo.filter(item => item.userId === user.uid).map(filteredItem =>{
             if(filteredItem.level > 29){
-                return(arr.push(<div className='card'>  <div>&#x1F30B;</div> <p>VULCANO</p> <h5 className='subtitle'>Level 30</h5></div>),setEmojis(arr))
+                return(arr.push(<div className='card' >  <div>&#x1F30B;</div> <p>VULCANO</p> <h5 className='subtitle'>Level 30</h5></div>),setEmojis(arr))
             }else{
-                return(arr.push(<div className='card'> <div>?</div> <h5 className='subtitle'>Level 30</h5></div>),setEmojis(arr))
+                return(arr.push(<div className='card' > <div>?</div> <h5 className='subtitle'>Level 30</h5></div>),setEmojis(arr))
             }
         })
     }  
@@ -180,7 +180,7 @@ const Achievement = () => {
     <button className="back-btn" onClick={()=> navigate('/main')}> <>&#x21A9; </></button>
     {show &&<Slider {...settings}>
         {emojis.map(item=>(
-              <>{item}</>
+              <div key={item.id}>{item}</div>
         ))}
     </Slider> }
 </div>
