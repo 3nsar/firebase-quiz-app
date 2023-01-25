@@ -8,6 +8,6 @@
  If you get at least 7/10 questions right you will level up.
 
 ## Achievments
-You will be able to unlock some card, if you reach specific levels.
+You will be able to unlock some cards, if you reach specific levels.
 
-
+<img width="960" alt="loginpage 2023-01-25 181223" src="https://user-images.githubusercontent.com/84131267/214633785-e07a21f8-2915-437d-a877-3f6502bc478e.png">
