@@ -1,6 +1,6 @@
 # firebase-quiz-app
- This is a Quiz-App created with Firebase V9 and React JS.
-
+ This quiz app allows you to advance to higher levels by answering 7 out of 10 questions correctly. The main objective is to unlock all the secret cards. For this project, I utilized React JS and Google Firebase v9. With Firebase's assistance, your progress will be saved automatically.
+ 
  ![ezgif gifgifif-maker(1)](https://user-images.githubusercontent.com/84131267/214962670-10747f1f-4685-49a6-b1e3-c958d9bc7b4d.gif)
 
 
